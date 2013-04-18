@@ -12,6 +12,8 @@ files = [
   JASMINE_ADAPTER,
   'js/lib/jquery.min.js',
   'tests/specs/*.js',
+  'js/init.js',
+  'js/func/*.js',
   'js/*/*.js'
 ];
 
