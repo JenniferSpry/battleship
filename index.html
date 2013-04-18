@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>BattleShipJS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="header">
+    <div class="logo">BatteShipJS</div>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="#" class="link1">Home</a></li>
+        <li><a href="#" class="link2">Documentation</a></li>
+        <li><a href="#" class="link3">Tests</a></li>
+        <li><a href="#" class="link5">Impress</a></li>
+      </ul>
+    </nav>
+    <ul class="debug">
+      <li><a href="#" class="enableDebug">Enable Debug</a></li>
+      <li><a href="#" class="disableDebug">Disable Debug</a></li>  
+    </ul>
+  </header>
+  <div id="content">
+    <canvas id="battleship" width="680" height="450"></canvas>
+    <div id="debug" class="debug">
+      <ul>
+        <li>Cursor Position: <span class="cursor-position">x/y</span>px</li>
+        <li>Active Field: <span class="active-field">x/y</span></li>
+        <li>Shots fired: <span class="shots-fired">0</span></li>
+        <li>Hits landed: <span class="hits-landed">0</span></li>
+        <li>Phase: <span class="phase">Init</span></li>
+        <li>Active: <span class="active">Computer</span></li>
+      </ul>
+    </div>
+  </div>
+  
+  <footer></footer>
+</body>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/init.js"></script>
+<script src="js/drawPlayGround.js"></script>
+<script src="js/application.js"></script>
+</html>

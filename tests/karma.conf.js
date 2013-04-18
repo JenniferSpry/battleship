@@ -10,9 +10,9 @@ basePath = '../';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'js/vendor/jquery-1.9.1.min.js',
-  'test/spec/*.js',
-  'js/*.js'
+  'js/lib/jquery.min.js',
+  'tests/specs/*.js',
+  'js/*/*.js'
 ];
 
 
