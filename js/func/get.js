@@ -2,8 +2,6 @@ function coordsToField(x,y) {
   if(x>500){x-=20;}
   x=(Math.floor((x-60)/42))+1;
   y=(Math.floor((y-90)/42))+1;
-  //limit Output to allowed numbers.
-  if(x>20){x=20;}
   return [x,y];
 }
 
