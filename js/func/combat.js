@@ -4,7 +4,7 @@ function checkHit (x,y,hitPoints) {
     if(hitPoints[i][0]===hitPoint[0] && hitPoints[i][1] === hitPoint[1]) {
       drawField(x,y,colorHit);
       alert('Treffer!');
-      break;
+      return true;
     } else {
       drawField(x,y,colorMiss);
     }
