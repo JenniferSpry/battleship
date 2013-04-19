@@ -4,6 +4,14 @@ var hitsLanded = 0;
 var playerActive = 'Computer';
 var hitPoints;
 
+var colorShip = "rgba(0,0,0,1)";
+var colorWater = "rgba(100,100,255,1)";
+var colorMiss = "rgba(150,150,255,1)";
+var colorHit = "rgba(255,0,0,1)";
+var colorDestroyed = "rgba(0,250,0,1)";
+var colorHighLight = "rgba(0,2,1,0.2)";
+
+
 var shipPositions = [
   {start:[1,5], end: [3,5]},
   {start:[8,2], end: [8,5]},
