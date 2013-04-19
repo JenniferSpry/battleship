@@ -1,45 +1,27 @@
-var scriptsArray = [];
-var imagesArray = [];
+var date = new Date();
 
-function getImages() {
-  var scripts = document.querySelectorAll('img[src]');
-  return Array.prototype.map.call(scripts, function (e) {
-    return e.getAttribute('src');
-  });
-}
+var casper = require('casper').create({
+    viewportSize: {width: 1680, height: 1050}
+});
 
-function getScripts() {
-  var scripts = document.querySelectorAll('script[src]');
-  return Array.prototype.map.call(scripts, function(e) {
-    return e.getAttribute('src');
-  });
-}
 
-var casper = require('casper').create();
+casper.on("page.error", function (msg, trace) {
+    this.echo("Error:    " + msg, "ERROR");
+    this.echo("file:     " + trace[0].file, "WARNING");
+    this.echo("line:     " + trace[0].line, "WARNING");
+    this.echo("function: " + trace[0]["function"], "WARNING");
+});
+
+casper.on("resource.received", function(request) {
+    if (request.status === 404) {
+        this.echo('Resource Not Found:' + request.url, 'ERROR');
+    }
+});
+
 casper.start('http://localhost/~julius/battleshipJS/', function () {
-  this.echo('page downloaded: ' + this.getCurrentUrl());
-  scriptsArray = this.evaluate(getScripts);
-  var self = this;
-  scriptsArray.forEach(function(item) {
-    if (self.resourceExists(item)) {
-      self.echo(item + ' loaded');
-    } else {
-      self.echo(item + ' not loaded', 'ERROR');
-    }
-  });
-  imagesArray = this.evaluate(getImages);
-  self = this;
-  imagesArray.forEach(function (item) {
-    if (self.resourceExists(item)) {
-      self.echo(item + ' loaded');
-    } else {
-      var message = item + ' not loaded';
-      self.echo(message, 'ERROR');
-    }
-  });
-  if (this.isThereAnError === false) {
-      casper.capture('noimages.png');
-  }
+  this.echo('Page downloaded: ' + this.getCurrentUrl());
+  casper.capture('screenshots/'+ date +'.png');
+  this.echo('Screenshot created: '+date+'.png');
 });
 
 casper.run(function () {
