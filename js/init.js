@@ -26,6 +26,16 @@ var colorHit = "rgba(255,0,0,1)";
 var colorDestroyed = "rgba(0,250,0,1)";
 var colorHighLight = "rgba(0,2,1,0.2)";
 
+var mapState = new Array(20);
+for (var i = 1; i <= 20; i++) {
+  mapState[i] = new Array(10);
+  for (var j = 1; j <= 10; j++) {
+    mapState[i][j] = 0;
+    // 0=nicht beschossen
+    // 1=beschossen wasser
+    // 2=beschossen schiff
+  }
+}
 
 var shipPositions = [
   {start:[1,5], end: [3,5]},
@@ -54,5 +64,5 @@ var sprites = {
   explosion: { sx: 0, sy: 2190, w: 40, h: 40, frames: 4 },
   drop: { sx: 0, sy: 2230, w: 40, h: 40, frames: 4 },
   cursor: { sx: 40, sy: 2270, w: 40, h: 40, frames: 4},
-  fog: { sx: 160, sy: 2190, w: 40, h: 40, frames: 1}
+  fog: { sx: 200, sy: 2190, w: 40, h: 40, frames: 1}
 };
