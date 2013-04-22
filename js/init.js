@@ -1,4 +1,18 @@
 var canvas = document.getElementById('battleship');
+var ctx = canvas.getContext("2d");
+
+window.requestAnimFrame = (function(callback) {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(callback) {
+      	window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
+var image = new Image();
+image.src = 'files/sprite.png';
+
+var coursorpos = {x:0, y:0};
+var activeField = {x:0, y:0};
 
 var shotsFired = 0;
 var currentPhase = 'Init';
@@ -24,3 +38,22 @@ var shipPositions = [
   {start:[20,9], end: [20,10]},
   {start:[18,2], end: [18,5]}
 ];
+
+var sprites = {
+  start:      { sx: 0, sy: 0, w: 960, h: 650, frames: 1 },
+  bgposition: { sx: 0, sy: 650, w: 960, h: 650, frames: 1 },
+  bg:         { sx: 0, sy: 1300, w: 960, h: 650, frames: 1 },
+  ship5:      { sx: 0, sy: 1950, w: 40, h: 200, frames: 1 },
+  ship5sunk:  { sx: 40, sy: 0, w: 40, h: 200, frames: 1 },
+  ship4: { sx: 80, sy: 1950, w: 40, h: 160, frames: 1 },
+  ship4sunk: { sx: 120, sy: 1950, w: 40, h: 160, frames: 1 },
+  ship3: { sx: 160, sy: 1950, w: 40, h: 120, frames: 1 },
+  ship3sunk: { sx: 200, sy: 0, w: 40, h: 120, frames: 1 },
+  ship2: { sx: 160, sy: 2070, w: 40, h: 80, frames: 1 },
+  ship2sunk: { sx: 200, sy: 2070, w: 40, h: 80, frames: 1 },
+  smoke: { sx: 0, sy: 2150, w: 40, h: 40, frames: 4 },
+  explosion: { sx: 0, sy: 2190, w: 40, h: 40, frames: 4 },
+  drop: { sx: 0, sy: 2230, w: 40, h: 40, frames: 4 },
+  cursor: { sx: 40, sy: 2270, w: 40, h: 40, frames: 4},
+  fog: { sx: 160, sy: 2190, w: 40, h: 40, frames: 1}
+};

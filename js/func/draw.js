@@ -1,6 +1,5 @@
 function drawField (x,y,color) {
   if(x>=1 && x<=20 && y<=10 && y>=1){
-    var ctx = canvas.getContext("2d");
     ctx.fillStyle = color;
     ctx.fillRect (fieldToCoords(x,y)[0], fieldToCoords(x,y)[1], 40, 40);
   }
@@ -20,3 +19,20 @@ function drawPlayGround(xAxis) {
 function highlightField (x, y) {
   drawField(x, y, colorHighLight);
 }
+
+function drawCursor(x,y){
+  var s = sprites["cursor"];
+  ctx.drawImage(image, s.sx, s.sy, 
+               s.w, s.h, 
+               fieldToCoords(x,y)[0], fieldToCoords(x,y)[1],
+               s.w, s.h);
+};
+
+function drawBackground(){
+  var s = sprites["bg"];
+  ctx.drawImage(image, s.sx, s.sy, 
+               s.w, s.h, 
+               0, 0,
+               s.w, s.h);
+};
+
