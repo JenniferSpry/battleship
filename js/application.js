@@ -6,6 +6,7 @@
     $('.active-field').html(coordsToField(mousePos.x, mousePos.y)[0] + ',' + coordsToField(mousePos.x, mousePos.y)[1]);
     coursorpos.x = coordsToField(mousePos.x, mousePos.y)[0];
     coursorpos.y = coordsToField(mousePos.x, mousePos.y)[1];
+    $('.active-field-coord').html(fieldToCoords(coursorpos.x,coursorpos.y)[0] + ',' +  fieldToCoords(coursorpos.x,coursorpos.y)[1]);
   }, false);
 
   canvas.addEventListener('click', function(evt) {

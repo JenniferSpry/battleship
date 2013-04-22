@@ -12,7 +12,6 @@ var image = new Image();
 image.src = 'files/sprite.png';
 
 var coursorpos = {x:0, y:0};
-var activeField = {x:0, y:0};
 
 var shotsFired = 0;
 var currentPhase = 'Init';

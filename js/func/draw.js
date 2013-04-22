@@ -22,6 +22,10 @@ function highlightField (x, y) {
 
 function drawCursor(x,y){
   var s = sprites["cursor"];
+  if (x<1){x=1}
+  else if (x>20){x=20};
+  if (y<1){y=1}
+  else if (y>10){y=10};
   ctx.drawImage(image, s.sx, s.sy, 
                s.w, s.h, 
                fieldToCoords(x,y)[0], fieldToCoords(x,y)[1],
