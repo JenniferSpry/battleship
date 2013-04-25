@@ -13,10 +13,10 @@
     shotsFired++;
     $('.shots-fired').html(shotsFired);
     $('.cursor-position').html(coursorpos.x);
-    mapState[coursorpos.x][coursorpos.y] = 1;
+    mapState[coursorpos.x][coursorpos.y] = 2;
     if(checkHit(coursorpos.x, coursorpos.y, hitPoints)) {
       hitsLanded++;
-      mapState[coursorpos.x][coursorpos.y] = 2;
+      mapState[coursorpos.x][coursorpos.y] = 1;
       $('.hits-landed').html(hitsLanded);
     } 
   });

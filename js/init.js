@@ -32,8 +32,8 @@ for (var i = 1; i <= 20; i++) {
   for (var j = 1; j <= 10; j++) {
     mapState[i][j] = 0;
     // 0=nicht beschossen
-    // 1=beschossen wasser
-    // 2=beschossen schiff
+    // 1=beschossen schiff
+    // 2=beschossen wasser
   }
 }
 
@@ -53,13 +53,9 @@ var sprites = {
   bgposition: { sx: 0, sy: 650, w: 960, h: 650, frames: 1 },
   bg:         { sx: 0, sy: 1300, w: 960, h: 650, frames: 1 },
   ship5:      { sx: 0, sy: 1950, w: 40, h: 200, frames: 1 },
-  ship5sunk:  { sx: 40, sy: 0, w: 40, h: 200, frames: 1 },
   ship4: { sx: 80, sy: 1950, w: 40, h: 160, frames: 1 },
-  ship4sunk: { sx: 120, sy: 1950, w: 40, h: 160, frames: 1 },
   ship3: { sx: 160, sy: 1950, w: 40, h: 120, frames: 1 },
-  ship3sunk: { sx: 200, sy: 0, w: 40, h: 120, frames: 1 },
   ship2: { sx: 160, sy: 2070, w: 40, h: 80, frames: 1 },
-  ship2sunk: { sx: 200, sy: 2070, w: 40, h: 80, frames: 1 },
   smoke: { sx: 0, sy: 2150, w: 40, h: 40, frames: 4 },
   explosion: { sx: 0, sy: 2190, w: 40, h: 40, frames: 4 },
   drop: { sx: 0, sy: 2230, w: 40, h: 40, frames: 4 },
