@@ -28,29 +28,32 @@ function drawFields(){
 }
 
 function drawShips(){
-  var s2 = sprites["ship2"];
-  var s3 = sprites["ship3"];
-  var s4 = sprites["ship4"];
-  var s5 = sprites["ship5"];
-  for (var i = 1; i <= 20; i++) {
-    if (shipPositions[i].start[0] > 10){
-      if (shipPositions[i].start[1] == shipPositions[i].end[1]){
-        var laenge = shipPositions[i].start[0] - shipPositions[i].end[0];
-        switch(laenge){
-        // case 1:
-        //   execute code block 1
-        //   break;
-        // case 2:
-        //   execute code block 2
-        //   break;
-        default:
-          ctx.drawImage(image, s2.sx, s2.sy, s2.w, s2.h, 
-             shipPositions[i].start[0], shipPositions[i].start[1],
-             s2.w, s2.h);
-        }
+  for (var i = 0; i < shipPositions.length; i++) {
+    //if (shipPositions[i].start[0] > 10){
+      if (shipPositions[i].start[1] === shipPositions[i].end[1]){
+        var laenge = shipPositions[i].end[0] - shipPositions[i].start[0] + 1;
+        var ship = "ship" + laenge.toString();
+        var s = sprites[ship];
+        ctx.drawImage(image, s.sx, s.sy, s.w, s.h, 
+             fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1],
+             s.w, s.h);
+      } else {
+        // translate context to center of canvas
+        ctx.save();
+        ctx.translate(fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1]);
+
+        // rotate 45 degrees clockwise
+        ctx.rotate(Math.PI / 2);
+        var laenge = shipPositions[i].end[1] - shipPositions[i].start[1] + 1;
+        var ship = "ship" + laenge.toString();
+        var s = sprites[ship];
+        ctx.drawImage(image, s.sx, s.sy, s.w, s.h, 
+             fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1],
+             s.w, s.h);
+         ctx.restore();
       }
     }
-  }
+  //}
 }
 
 function drawCursor(x,y){

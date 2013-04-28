@@ -45,7 +45,8 @@ var shipPositions = [
   {start:[13,5], end: [15,5]},
   {start:[15,7], end: [15,10]},
   {start:[20,9], end: [20,10]},
-  {start:[18,2], end: [18,5]}
+  {start:[18,2], end: [18,5]},
+  {start:[14,3], end: [16,3]}
 ];
 
 var sprites = {

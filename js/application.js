@@ -21,7 +21,6 @@
     } 
   });
 
-
   enableDebug();
 
   function animate() {
@@ -30,6 +29,7 @@
     // drawPlayGround(60);
     // drawPlayGround(500);
     drawFields();
+    drawShips();
     drawCursor(coursorpos.x, coursorpos.y);
     
     requestAnimFrame(function() {
@@ -40,6 +40,6 @@
   animate();
 
   for (var i = 0; i < shipPositions.length; i++) {
-    hitPoints = createShip(shipPositions[i].start,shipPositions[i].end);
+    //hitPoints = createShip(shipPositions[i].start,shipPositions[i].end);
   }
 })();
