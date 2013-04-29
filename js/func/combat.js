@@ -6,3 +6,15 @@ function checkHit (x,y,hitPoints) {
     }
   }
 }
+
+function fire(x, y){
+  if ((x>0)&&(x<21)&&(y>0)&&(y<11)){
+    shotsFired++;
+    mapState[x][y] = 2;
+    if(checkHit(x, y, hitPoints)) {
+      hitsLanded++;
+      mapState[x][y] = 1;
+      $('.hits-landed').html(hitsLanded);
+    } 
+  }
+}

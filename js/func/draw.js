@@ -29,31 +29,25 @@ function drawFields(){
 
 function drawShips(){
   for (var i = 0; i < shipPositions.length; i++) {
-    //if (shipPositions[i].start[0] > 10){
-      if (shipPositions[i].start[1] === shipPositions[i].end[1]){
-        var laenge = shipPositions[i].end[0] - shipPositions[i].start[0] + 1;
-        var ship = "ship" + laenge.toString();
-        var s = sprites[ship];
+    if (shipPositions[i].start[0] > 10){
+      if (shipPositions[i].start[0] === shipPositions[i].end[0]){ //senkrecht
+        var laenge = shipPositions[i].end[1] - shipPositions[i].start[1] + 1;
+        var s = sprites["ship" + laenge.toString()];
         ctx.drawImage(image, s.sx, s.sy, s.w, s.h, 
              fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1],
              s.w, s.h);
       } else {
-        // translate context to center of canvas
         ctx.save();
         ctx.translate(fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1]);
-
-        // rotate 45 degrees clockwise
-        ctx.rotate(Math.PI / 2);
-        var laenge = shipPositions[i].end[1] - shipPositions[i].start[1] + 1;
-        var ship = "ship" + laenge.toString();
-        var s = sprites[ship];
+        ctx.rotate(Math.PI / -2);
+        var laenge = shipPositions[i].end[0] - shipPositions[i].start[0] + 1;
+        var s = sprites["ship" + laenge.toString()];
         ctx.drawImage(image, s.sx, s.sy, s.w, s.h, 
-             fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1],
-             s.w, s.h);
-         ctx.restore();
+             0, 0, s.w, s.h);
+        ctx.restore();
       }
     }
-  //}
+  }
 }
 
 function drawCursor(x,y){
@@ -62,17 +56,13 @@ function drawCursor(x,y){
   else if (x>20){x=20};
   if (y<1){y=1}
   else if (y>10){y=10};
-  ctx.drawImage(image, s.sx, s.sy, 
-               s.w, s.h, 
+  ctx.drawImage(image, s.sx, s.sy, s.w, s.h, 
                fieldToCoords(x,y)[0], fieldToCoords(x,y)[1],
                s.w, s.h);
 };
 
 function drawBackground(){
   var s = sprites["bg"];
-  ctx.drawImage(image, s.sx, s.sy, 
-               s.w, s.h, 
-               0, 0,
-               s.w, s.h);
+  ctx.drawImage(image, s.sx, s.sy, s.w, s.h, 0, 0, s.w, s.h);
 };
 

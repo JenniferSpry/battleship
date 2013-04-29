@@ -10,15 +10,9 @@
   }, false);
 
   canvas.addEventListener('click', function(evt) {
-    shotsFired++;
     $('.shots-fired').html(shotsFired);
     $('.cursor-position').html(coursorpos.x);
-    mapState[coursorpos.x][coursorpos.y] = 2;
-    if(checkHit(coursorpos.x, coursorpos.y, hitPoints)) {
-      hitsLanded++;
-      mapState[coursorpos.x][coursorpos.y] = 1;
-      $('.hits-landed').html(hitsLanded);
-    } 
+    fire(coursorpos.x, coursorpos.y);
   });
 
   enableDebug();
@@ -26,10 +20,8 @@
   function animate() {
 
     drawBackground();
-    // drawPlayGround(60);
-    // drawPlayGround(500);
-    drawFields();
     drawShips();
+    drawFields();
     drawCursor(coursorpos.x, coursorpos.y);
     
     requestAnimFrame(function() {
@@ -40,6 +32,6 @@
   animate();
 
   for (var i = 0; i < shipPositions.length; i++) {
-    //hitPoints = createShip(shipPositions[i].start,shipPositions[i].end);
+    hitPoints = createShip(shipPositions[i].start, shipPositions[i].end);
   }
 })();
