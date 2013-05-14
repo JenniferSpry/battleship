@@ -1,11 +1,11 @@
 var canvas = document.getElementById('battleship');
-var ctx = canvas.getContext("2d");
+var ctx = canvas.getContext('2d');
 
 window.requestAnimFrame = (function(callback) {
-    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-    function(callback) {
-      	window.setTimeout(callback, 1000 / 60);
-    };
+  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+  function(callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
 })();
 
 var image = new Image();

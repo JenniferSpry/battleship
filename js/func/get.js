@@ -7,7 +7,7 @@ function coordsToField(x,y) {
 
 function fieldToCoords (x,y) {
   if ( x >= 11){
-    x=(x*40)-40+60+40;
+    x=(x*40)+60;
   } else {x=(x*40)-40+60;}
   y=(y*40)+125-40;
   return [x,y];

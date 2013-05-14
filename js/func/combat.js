@@ -15,6 +15,6 @@ function fire(x, y){
       hitsLanded++;
       mapState[x][y] = 1;
       $('.hits-landed').html(hitsLanded);
-    } 
+    }
   }
 }

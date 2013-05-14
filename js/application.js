@@ -18,12 +18,10 @@
   enableDebug();
 
   function animate() {
-
     drawBackground();
     drawShips();
     drawFields();
     drawCursor(coursorpos.x, coursorpos.y);
-    
     requestAnimFrame(function() {
       animate();
     });
