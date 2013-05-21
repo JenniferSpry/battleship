@@ -1,9 +1,10 @@
+/*global document, window, Image */
+
 var canvas = document.getElementById('battleship');
 var ctx = canvas.getContext('2d');
 
-window.requestAnimFrame = (function(callback) {
-  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-  function(callback) {
+window.requestAnimFrame = (function (callback) {
+  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
     window.setTimeout(callback, 1000 / 60);
   };
 })();
@@ -11,7 +12,7 @@ window.requestAnimFrame = (function(callback) {
 var image = new Image();
 image.src = 'files/sprite.png';
 
-var coursorpos = {x:0, y:0};
+var coursorpos = {x: 0, y: 0};
 
 var shotsFired = 0;
 var currentPhase = 'Init';
@@ -27,9 +28,10 @@ var colorDestroyed = "rgba(0,250,0,1)";
 var colorHighLight = "rgba(0,2,1,0.2)";
 
 var mapState = new Array(20);
-for (var i = 1; i <= 20; i++) {
+var i, j;
+for (i = 1; i <= 20; i++) {
   mapState[i] = new Array(10);
-  for (var j = 1; j <= 10; j++) {
+  for (j = 1; j <= 10; j++) {
     mapState[i][j] = 0;
     // 0=nicht beschossen
     // 1=beschossen schiff
@@ -38,14 +40,14 @@ for (var i = 1; i <= 20; i++) {
 }
 
 var shipPositions = [
-  {start:[1,5], end: [3,5]},
-  {start:[8,2], end: [8,5]},
-  {start:[1,9], end: [4,9]},
-  {start:[9,9], end: [9,10]},
-  {start:[13,5], end: [15,5]},
-  {start:[15,7], end: [15,10]},
-  {start:[20,9], end: [20,10]},
-  {start:[18,2], end: [18,5]}
+  {start: [1, 5], end: [3, 5]},
+  {start: [8, 2], end: [8, 5]},
+  {start: [1, 9], end: [4, 9]},
+  {start: [9, 9], end: [9, 10]},
+  {start: [13, 5], end: [15, 5]},
+  {start: [15, 7], end: [15, 10]},
+  {start: [20, 9], end: [20, 10]},
+  {start: [18, 2], end: [18, 5]}
 ];
 
 var sprites = {

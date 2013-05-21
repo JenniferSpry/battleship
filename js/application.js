@@ -1,6 +1,11 @@
-(function() {
+/*global canvas, getMousePos, shotsFired, hitPoints, mapState, hitsLanded, coursorpos */
+/*global ctx, fieldToCoords, coordsToField, image, sprites, mapState, shipPositions, fire */
+/*global enableDebug, drawBackground, drawShips, drawFields, drawCursor, requestAnimFrame, createShip */
+/*global $, jQuery*/
 
-  canvas.addEventListener('mousemove', function(evt) {
+(function () {
+
+  canvas.addEventListener('mousemove', function (evt) {
     var mousePos = getMousePos(canvas, evt);
     $('.cursor-position').html(mousePos.x + 'x/' + mousePos.y + 'y');
     $('.active-field').html(coordsToField(mousePos.x, mousePos.y)[0] + ',' + coordsToField(mousePos.x, mousePos.y)[1]);
@@ -9,7 +14,7 @@
     $('.active-field-coord').html(fieldToCoords(coursorpos.x, coursorpos.y)[0] + ',' +  fieldToCoords(coursorpos.x, coursorpos.y)[1]);
   }, false);
 
-  canvas.addEventListener('click', function(evt) {
+  canvas.addEventListener('click', function (evt) {
     $('.shots-fired').html(shotsFired);
     $('.cursor-position').html(coursorpos.x);
     fire(coursorpos.x, coursorpos.y);
@@ -22,14 +27,15 @@
     drawShips();
     drawFields();
     drawCursor(coursorpos.x, coursorpos.y);
-    requestAnimFrame(function() {
+    requestAnimFrame(function () {
       animate();
     });
   }
 
   animate();
 
-  for (var i = 0; i < shipPositions.length; i++) {
+  var i;
+  for (i = 0; i < shipPositions.length; i++) {
     hitPoints = createShip(shipPositions[i].start, shipPositions[i].end);
   }
 })();
