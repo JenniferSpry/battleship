@@ -1,7 +1,13 @@
 function drawField (x, y, type) {
-  ctx.drawImage(image, sprites[type].sx, sprites[type].sy, sprites[type].w, sprites[type].h,
+  if ((x===0)&&(y===0)){
+    ctx.drawImage(image, sprites[type].sx, sprites[type].sy, sprites[type].w, sprites[type].h,
+             0, 0,
+             sprites[type].w, sprites[type].h);
+  } else {
+    ctx.drawImage(image, sprites[type].sx, sprites[type].sy, sprites[type].w, sprites[type].h,
              fieldToCoords(x,y)[0], fieldToCoords(x,y)[1],
              sprites[type].w, sprites[type].h);
+  }
 }
 
 function drawFields(){
@@ -28,20 +34,13 @@ function drawFields(){
 function drawShips(){
   for (var i = 0; i < shipPositions.length; i++) {
     if (shipPositions[i].start[0] > 10){
-      if (shipPositions[i].start[0] === shipPositions[i].end[0]){ //senkrecht
-        var laenge = shipPositions[i].end[1] - shipPositions[i].start[1] + 1;
-        var s = sprites["ship" + laenge.toString()];
-        ctx.drawImage(image, s.sx, s.sy, s.w, s.h,
-             fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1],
-             s.w, s.h);
-      } else {
+      if (shipPositions[i].start[0] === shipPositions[i].end[0]){ //vertical
+        drawField(shipPositions[i].start[0], shipPositions[i].start[1], "ship"+(shipPositions[i].end[1]-shipPositions[i].start[1]+1).toString());
+      } else { //horizontal
         ctx.save();
         ctx.translate(fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1]);
         ctx.rotate(Math.PI / -2);
-        var laenge = shipPositions[i].end[0] - shipPositions[i].start[0] + 1;
-        var s = sprites["ship" + laenge.toString()];
-        ctx.drawImage(image, s.sx, s.sy, s.w, s.h,
-             0, 0, s.w, s.h);
+        drawField(0, 0, "ship"+(shipPositions[i].end[0]-shipPositions[i].start[0]+1).toString());
         ctx.restore();
       }
     }
@@ -49,18 +48,14 @@ function drawShips(){
 }
 
 function drawCursor(x,y){
-  var s = sprites["cursor"];
   if (x<1){x=1}
   else if (x>20){x=20};
   if (y<1){y=1}
   else if (y>10){y=10};
-  ctx.drawImage(image, s.sx, s.sy, s.w, s.h, 
-               fieldToCoords(x,y)[0], fieldToCoords(x,y)[1],
-               s.w, s.h);
+  drawField(x, y, 'cursor');
 }
 
 function drawBackground(){
-  var s = sprites["bg"];
-  ctx.drawImage(image, s.sx, s.sy, s.w, s.h, 0, 0, s.w, s.h);
+  ctx.drawImage(image, sprites["bg"].sx, sprites["bg"].sy, sprites["bg"].w, sprites["bg"].h, 0, 0, sprites["bg"].w, sprites["bg"].h);
 };
 
