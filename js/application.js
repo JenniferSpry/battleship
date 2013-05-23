@@ -1,25 +1,41 @@
-(function() {
-  canvas.addEventListener('mousemove', function(evt) {
+/*global canvas, getMousePos, shotsFired, hitPoints, mapState, hitsLanded, coursorpos */
+/*global ctx, fieldToCoords, coordsToField, image, sprites, mapState, shipPositions, fire */
+/*global enableDebug, drawBackground, drawShips, drawFields, drawCursor, requestAnimFrame, createShip */
+/*global $, jQuery*/
+
+(function () {
+
+  canvas.addEventListener('mousemove', function (evt) {
     var mousePos = getMousePos(canvas, evt);
     $('.cursor-position').html(mousePos.x + 'x/' + mousePos.y + 'y');
     $('.active-field').html(coordsToField(mousePos.x, mousePos.y)[0] + ',' + coordsToField(mousePos.x, mousePos.y)[1]);
+    coursorpos.x = coordsToField(mousePos.x, mousePos.y)[0];
+    coursorpos.y = coordsToField(mousePos.x, mousePos.y)[1];
+    $('.active-field-coord').html(fieldToCoords(coursorpos.x, coursorpos.y)[0] + ',' +  fieldToCoords(coursorpos.x, coursorpos.y)[1]);
   }, false);
-  canvas.addEventListener('click', function(evt) {
-    shotsFired++;
+
+  canvas.addEventListener('click', function (evt) {
     $('.shots-fired').html(shotsFired);
-    var mousePos = getMousePos(canvas, evt);
-    if(checkHit(coordsToField(mousePos.x, mousePos.y)[0], coordsToField(mousePos.x, mousePos.y)[1], hitPoints)) {
-      hitsLanded++;
-      $('.hits-landed').html(hitsLanded);
-    }
+    $('.cursor-position').html(coursorpos.x);
+    fire(coursorpos.x, coursorpos.y);
   });
 
-
   enableDebug();
-  drawPlayGround(60);
-  drawPlayGround(500);
 
-  for (var i = 0; i < shipPositions.length; i++) {
-    hitPoints = createShip(shipPositions[i].start,shipPositions[i].end);
+  function animate() {
+    drawBackground();
+    drawShips();
+    drawFields();
+    drawCursor(coursorpos.x, coursorpos.y);
+    requestAnimFrame(function () {
+      animate();
+    });
+  }
+
+  animate();
+
+  var i;
+  for (i = 0; i < shipPositions.length; i++) {
+    hitPoints = createShip(shipPositions[i].start, shipPositions[i].end);
   }
 })();
