@@ -1,5 +1,17 @@
 /*global document, window, Image */
+var coursorpos = {x: 0, y: 0};
+var shotsFired = 0;
+var hitsLanded = 0;
+var hitPoints;
 
+var colorShip = "rgba(0,0,0,1)";
+var colorWater = "rgba(100,100,255,1)";
+var colorMiss = "rgba(150,150,255,1)";
+var colorHit = "rgba(255,0,0,1)";
+var colorDestroyed = "rgba(0,250,0,1)";
+var colorHighLight = "rgba(0,2,1,0.2)";
+
+var gameStatus = 0; // 0 = init, 1 = player turn, 2 = computer turn, 3 = game won, 4 = game lost
 var canvas = document.getElementById('battleship');
 var ctx = canvas.getContext('2d');
 
@@ -11,21 +23,6 @@ window.requestAnimFrame = (function (callback) {
 
 var image = new Image();
 image.src = 'files/sprite.png';
-
-var coursorpos = {x: 0, y: 0};
-
-var shotsFired = 0;
-var currentPhase = 'Init';
-var hitsLanded = 0;
-var playerActive = 'Computer';
-var hitPoints;
-
-var colorShip = "rgba(0,0,0,1)";
-var colorWater = "rgba(100,100,255,1)";
-var colorMiss = "rgba(150,150,255,1)";
-var colorHit = "rgba(255,0,0,1)";
-var colorDestroyed = "rgba(0,250,0,1)";
-var colorHighLight = "rgba(0,2,1,0.2)";
 
 var mapState = new Array(20);
 var i, j;
