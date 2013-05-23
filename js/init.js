@@ -1,4 +1,9 @@
 /*global document, window, Image */
+
+var gameStatus = 'init'; // init, playerTurn, computerTurn, gameWon, gameLost
+var canvas = document.getElementById('battleship');
+var ctx = canvas.getContext('2d');
+
 var coursorpos = {x: 0, y: 0};
 var shotsFired = 0;
 var hitsLanded = 0;
@@ -11,21 +16,38 @@ var colorHit = "rgba(255,0,0,1)";
 var colorDestroyed = "rgba(0,250,0,1)";
 var colorHighLight = "rgba(0,2,1,0.2)";
 
-var gameStatus = 0; // 0 = init, 1 = player turn, 2 = computer turn, 3 = game won, 4 = game lost
-var canvas = document.getElementById('battleship');
-var ctx = canvas.getContext('2d');
+var image = new Image();
+image.src = 'files/sprite.png';
 
+/**
+ * Schiffs Klasse
+ */
+var ship = {
+  start : [1,5],
+  end: [3,5],
+  type : 1 // 0 = computer, 1 = player
+};
+
+
+/*
+Animationsgeschwindigkeit
+ */
 window.requestAnimFrame = (function (callback) {
   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
     window.setTimeout(callback, 1000 / 60);
   };
 })();
 
-var image = new Image();
-image.src = 'files/sprite.png';
-
+/**
+ * Enthält die Informationen zu jedem einzelnen Feld.
+ * @type {Array of Arrays}
+ */
 var mapState = new Array(20);
 var i, j;
+
+/*
+Initialisiert alles mit 0.
+ */
 for (i = 1; i <= 20; i++) {
   mapState[i] = new Array(10);
   for (j = 1; j <= 10; j++) {
@@ -36,6 +58,10 @@ for (i = 1; i <= 20; i++) {
   }
 }
 
+
+/**
+ * @type {Array of Ship Objects}
+ */
 var shipPositions = [
   {start: [1, 5], end: [3, 5]},
   {start: [8, 2], end: [8, 5]},
@@ -46,6 +72,7 @@ var shipPositions = [
   {start: [20, 9], end: [20, 10]},
   {start: [18, 2], end: [18, 5]}
 ];
+
 
 var sprites = {
   start:      { sx: 0, sy: 0, w: 960, h: 650, frames: 1 },
