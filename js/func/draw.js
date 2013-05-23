@@ -42,7 +42,7 @@ function drawShips() {
         drawField(shipPositions[i].start[0], shipPositions[i].start[1], "ship" + (shipPositions[i].end[1] - shipPositions[i].start[1] + 1).toString());
       } else { //horizontal
         ctx.save();
-        ctx.translate(fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[1]);
+        ctx.translate(fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1] + 1)[1]);
         ctx.rotate(Math.PI / -2);
         drawField(0, 0, "ship" + (shipPositions[i].end[0] - shipPositions[i].start[0] + 1).toString());
         ctx.restore();
