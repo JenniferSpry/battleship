@@ -24,19 +24,20 @@ function drawFields() {
       }
     }
   }
-  for (ix = 1; ix <= 10; ix++) { //nebel
-    for (iy = 1; iy <= 10; iy++) {
-      if (mapState[ix][iy] === 0) {
-        drawField(ix, iy, 'fog');
-      }
-    }
-  }
+  // for (ix = 1; ix <= 10; ix++) { //nebel
+  //   for (iy = 1; iy <= 10; iy++) {
+  //     if (mapState[ix][iy] === 0) {
+  //       drawField(ix, iy, 'fog');
+  //     }
+  //   }
+  // }
 }
 
 function drawShips() {
   var i;
   for (i = 0; i < shipPositions.length; i++) {
-    if (shipPositions[i].start[0] > 10) {
+    //if (shipPositions[i].start[0] > 10) {
+    if (shipPositions[i].start[0] > 0) {
       if (shipPositions[i].start[0] === shipPositions[i].end[0]) { //vertical
         drawField(shipPositions[i].start[0], shipPositions[i].start[1], "ship" + (shipPositions[i].end[1] - shipPositions[i].start[1] + 1).toString());
       } else { //horizontal

@@ -32,6 +32,8 @@
     });
   }
 
+  createComputerShips();
+
   animate();
 
   var i;
