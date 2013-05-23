@@ -64,14 +64,14 @@ for (i = 1; i <= 20; i++) {
  * @type {Array of Ship Objects}
  */
 var shipPositions = [
-  {start: [1, 5], end: [3, 5]},
-  {start: [8, 2], end: [8, 5]},
-  {start: [1, 9], end: [4, 9]},
-  {start: [9, 9], end: [9, 10]},
-  {start: [13, 5], end: [15, 5]},
-  {start: [15, 7], end: [15, 10]},
-  {start: [20, 9], end: [20, 10]},
-  {start: [18, 2], end: [18, 5]}
+  {start: [1, 5], end: [3, 5], type: 'enemy'},
+  {start: [8, 2], end: [8, 5], type: 'enemy'},
+  {start: [1, 9], end: [4, 9], type: 'enemy'},
+  {start: [9, 9], end: [9, 10], type: 'enemy'},
+  {start: [13, 5], end: [15, 5], type: 'enemy'},
+  {start: [15, 7], end: [15, 10], type: 'enemy'},
+  {start: [20, 9], end: [20, 10], type: 'enemy'},
+  {start: [18, 2], end: [18, 5], type: 'enemy'}
 ];
 
 
