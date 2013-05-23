@@ -32,7 +32,7 @@ function createComputerShips() {
 function positionShip5() {
   var rx, ry;
   var ship;
-  if (verticalRandom){
+  if (verticalRandom()){
     rx = Math.floor(Math.random() * 10 + 1);
     ry = Math.floor(Math.random() * 6 + 1);
     ship = {start: [rx, ry], end: [rx, ry + 4]};
@@ -58,7 +58,7 @@ function positionShip(n) {
 // dieses Schiff hat einen Margin, um die Kolision zu erkennen
 function createPlaceholderShip(n){
   var rx, ry;
-  if (!verticalRandom){
+  if (verticalRandom()){
     rx = Math.floor(Math.random() * 10 + 1);
     ry = Math.floor(Math.random() * (10 - n) + 1);
     return {start: [rx, ry], end: [rx + 2, ry + n + 1]};
@@ -75,11 +75,11 @@ function colides(ship) {
   for (i = ship.start[0]; i < ship.end[0]; i++) {
     for (j = ship.start[1]; j < ship.end[1]; j++) {
       if (mapState[i][j] === 3) {
-        return false;
+        return true;
       }
     }
   }
-  return true;
+  return false;
 }
 
 function addToMap(ship){
