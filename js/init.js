@@ -55,6 +55,7 @@ for (i = 1; i <= 20; i++) {
     // 0=nicht beschossen
     // 1=beschossen schiff
     // 2=beschossen wasser
+    // 3=nicht beschossenes Schiff
   }
 }
 
