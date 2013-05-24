@@ -7,14 +7,6 @@ var ctx = canvas.getContext('2d');
 var coursorpos = {x: 0, y: 0};
 var shotsFired = 0;
 var hitsLanded = 0;
-var hitPoints;
-
-var colorShip = "rgba(0,0,0,1)";
-var colorWater = "rgba(100,100,255,1)";
-var colorMiss = "rgba(150,150,255,1)";
-var colorHit = "rgba(255,0,0,1)";
-var colorDestroyed = "rgba(0,250,0,1)";
-var colorHighLight = "rgba(0,2,1,0.2)";
 
 var image = new Image();
 image.src = 'files/sprite.png';
@@ -43,10 +35,10 @@ for (i = 0; i <= 21; i++) {
   mapState[i] = new Array(12);
   for (j = 0; j <= 12; j++) {
     mapState[i][j] = 0;
-    // 0=nicht beschossen
-    // 1=beschossen schiff
-    // 2=beschossen wasser
-    // 3=nicht beschossenes Schiff
+    // 0=nicht beschossen Wasser
+    // 1=beschossen Schiff
+    // 2=beschossen Wasser
+    // 3=nicht beschossen Schiff
   }
 }
 

@@ -36,8 +36,4 @@
 
   animate();
 
-  var i;
-  for (i = 0; i < shipPositions.length; i++) {
-    hitPoints = createShip(shipPositions[i].start, shipPositions[i].end);
-  }
 })();

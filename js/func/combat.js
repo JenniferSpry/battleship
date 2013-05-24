@@ -1,24 +1,15 @@
-/*global shotsFired, hitPoints, mapState, hitsLanded */
+/*global shotsFired, mapState, hitsLanded */
 /*global $, jQuery*/
-
-function checkHit(x, y, hitPoints) {
-  var hitPoint = [x, y];
-  var i;
-  for (i = 0; i < hitPoints.length; i++) {
-    if (hitPoints[i][0] === hitPoint[0] && hitPoints[i][1] === hitPoint[1]) {
-      return true;
-    }
-  }
-}
 
 function fire(x, y) {
   if ((x > 0) && (x < 21) && (y > 0) && (y < 11)) {
     shotsFired++;
-    mapState[x][y] = 2;
-    if (checkHit(x, y, hitPoints)) {
-      hitsLanded++;
+    if (mapState[x][y] === 3) { // Schiff getroffen
       mapState[x][y] = 1;
+      hitsLanded++;
       $('.hits-landed').html(hitsLanded);
+    } else if (mapState[x][y] === 0) { //Wasser getroffen 
+      mapState[x][y] = 2;
     }
   }
 }
