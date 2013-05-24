@@ -61,12 +61,12 @@ function createPlaceholderShip(n){
   var rx, ry;
   if (verticalRandom()){
     rx = Math.floor(Math.random() * 9 + 1);
-    ry = Math.floor(Math.random() * (10 - n) + 1);
-    return {start: [rx, ry], end: [rx + 2, ry + n + 1]};
+    ry = Math.floor(Math.random() * (11 - n) + 1);
+    return {start: [rx - 1, ry - 1], end: [rx + 1, ry + n]};
   } else {
-    rx = Math.floor(Math.random() * (10 - n) + 1);
+    rx = Math.floor(Math.random() * (11 - n) + 1);
     ry = Math.floor(Math.random() * 9 + 1);
-    return {start: [rx, ry], end: [rx + n + 1, ry + 2]};
+    return {start: [rx - 1, ry - 1], end: [rx + n, ry + 1]};
   }
 }
 

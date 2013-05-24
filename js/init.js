@@ -37,11 +37,11 @@ var i, j;
 
 /*
 Initialisiert alles mit 0.
-Man bemerke, dass beide Arrays nicht wie gewohnt bei 0 anfangen!
+Man bemerke, dass die Schiffe erst ab Feld 1|1 positionert werden
  */
-for (i = 1; i <= 20; i++) {
-  mapState[i] = new Array(10);
-  for (j = 1; j <= 10; j++) {
+for (i = 0; i <= 21; i++) {
+  mapState[i] = new Array(12);
+  for (j = 0; j <= 12; j++) {
     mapState[i][j] = 0;
     // 0=nicht beschossen
     // 1=beschossen schiff
