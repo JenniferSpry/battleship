@@ -82,7 +82,6 @@ function addToMap(ship){
       mapState[ship.start[0]][i] = 3;
     }
   }
-  return hitPoints;
 }
 
 //entfernt den margin von den Schiffen
