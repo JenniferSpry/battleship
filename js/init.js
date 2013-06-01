@@ -9,7 +9,7 @@ var shotsFired = 0;
 var hitsLanded = 0;
 
 var image = new Image();
-image.src = 'files/sprite.png';
+image.src = 'img/sprite.png';
 
 /*
 Animationsgeschwindigkeit
@@ -58,13 +58,13 @@ var sprites = {
   start:      { sx: 0, sy: 0, w: 960, h: 650, frames: 1 },
   bgposition: { sx: 0, sy: 650, w: 960, h: 650, frames: 1 },
   bg:         { sx: 0, sy: 1300, w: 960, h: 650, frames: 1 },
-  ship5:      { sx: 0, sy: 1950, w: 40, h: 200, frames: 1 },
-  ship4: { sx: 80, sy: 1950, w: 40, h: 160, frames: 1 },
-  ship3: { sx: 160, sy: 1950, w: 40, h: 120, frames: 1 },
-  ship2: { sx: 160, sy: 2070, w: 40, h: 80, frames: 1 },
+  ship5:      { sx: 0, sy: 1950, w: 58, h: 200, frames: 1 },
+  ship4: { sx: 116, sy: 1950, w: 58, h: 160, frames: 1 },
+  ship3: { sx: 232, sy: 1950, w: 58, h: 120, frames: 1 },
+  ship2: { sx: 232, sy: 2070, w: 58, h: 80, frames: 1 },
   smoke: { sx: 0, sy: 2150, w: 40, h: 40, frames: 4 },
   explosion: { sx: 0, sy: 2190, w: 40, h: 40, frames: 4 },
-  drop: { sx: 0, sy: 2230, w: 40, h: 40, frames: 4 },
-  cursor: { sx: 40, sy: 2270, w: 40, h: 40, frames: 4},
+  drop: { sx: 0, sy: 2230, w: 40, h: 40, frames: 6 },
+  cursor: { sx: 40, sy: 2270, w: 40, h: 40, frames: 1},
   fog: { sx: 200, sy: 2190, w: 40, h: 40, frames: 1}
 };
