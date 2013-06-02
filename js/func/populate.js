@@ -7,11 +7,13 @@ for (i = 0; i < shipPositions.length; i++) {
 function createComputerShips() {
   positionShip5();
   positionShip(4);
-  positionShip(3);
-  positionShip(3);
-  positionShip(2);
-  positionShip(2);
-  positionShip(2);
+  // positionShip(4);
+  // positionShip(3);
+  // positionShip(3);
+  // positionShip(3);
+  // positionShip(2);
+  // positionShip(2);
+  // positionShip(2);
   positionShip(2);
 }
 

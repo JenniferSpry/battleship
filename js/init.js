@@ -1,6 +1,6 @@
 /*global document, window, Image */
 
-var gameStatus = 'init'; // init, playerTurn, computerTurn, gameWon, gameLost
+var gameStatus = 'init'; // init, init2, playerTurn, computerTurn, gameWon, gameLost
 var canvas = document.getElementById('battleship');
 var ctx = canvas.getContext('2d');
 
@@ -46,9 +46,10 @@ for (i = 0; i <= 21; i++) {
 /**
  * @type {Array of Ship Objects}
  */
+
 var shipPositions = [
-  {start: [13, 5], end: [15, 5]},
-  {start: [15, 7], end: [15, 10]},
+  {start: [1, 1], end: [3, 1]},
+  {start: [1, 7], end: [15, 10]},
   {start: [20, 9], end: [20, 10]},
   {start: [18, 2], end: [18, 5]}
 ];
