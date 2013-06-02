@@ -33,21 +33,24 @@ function drawFields() {
   // }
 }
 
+function drawShip(ship) {
+  if (ship.start[0] > 0) {
+    if(ship.start[0] === ship.end[0]) {
+      drawField(ship.start[0], ship.start[1], "ship" + (ship.end[1] - ship.start[1] + 1).toString());
+    } else { //horizontal
+      ctx.save();
+      ctx.translate(fieldToCoords(ship.start[0], ship.start[1])[0], fieldToCoords(ship.start[0], ship.start[1] + 1)[1]);
+      ctx.rotate(Math.PI / -2);
+      drawField(0, 0, "ship" + (ship.end[0] - ship.start[0] + 1).toString());
+      ctx.restore();
+    }
+  }
+}
+
 function drawShips() {
   var i;
   for (i = 0; i < shipPositions.length; i++) {
-    //if (shipPositions[i].start[0] > 10) {
-    if (shipPositions[i].start[0] > 0) {
-      if (shipPositions[i].start[0] === shipPositions[i].end[0]) { //vertical
-        drawField(shipPositions[i].start[0], shipPositions[i].start[1], "ship" + (shipPositions[i].end[1] - shipPositions[i].start[1] + 1).toString());
-      } else { //horizontal
-        ctx.save();
-        ctx.translate(fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1])[0], fieldToCoords(shipPositions[i].start[0], shipPositions[i].start[1] + 1)[1]);
-        ctx.rotate(Math.PI / -2);
-        drawField(0, 0, "ship" + (shipPositions[i].end[0] - shipPositions[i].start[0] + 1).toString());
-        ctx.restore();
-      }
-    }
+    drawShip(shipPositions[i]);
   }
 }
 
@@ -66,6 +69,12 @@ function drawCursor(x, y) {
 }
 
 function drawBackground() {
-  ctx.drawImage(image, sprites.bg.sx, sprites.bg.sy, sprites.bg.w, sprites.bg.h, 0, 0, sprites.bg.w, sprites.bg.h);
+  ctx.clearRect(0, 0, 950, 650);
 }
 
+function drawPlacement() {
+  ctx.beginPath();
+  ctx.rect(60, 125, 400, 400);
+  ctx.fillStyle = 'rgba(165,25,18,0.9)';
+  ctx.fill();
+}

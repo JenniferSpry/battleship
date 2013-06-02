@@ -50,3 +50,8 @@ canvas {
   text-decoration: none;
   color: white;
 }
+
+#battleship {
+  background-image: url(../img/sprite.png);
+  /*background-position:0px 1114px;*/
+}
