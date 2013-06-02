@@ -7,7 +7,7 @@
   // enableDebug();
 
   function animate() {
-    drawBackground();
+    clearBackground();
     drawShips();
     drawFields();
     drawCursor(coursorpos.x, coursorpos.y);
@@ -20,19 +20,29 @@ function Phases() {
   this.init = function() {
     console.log('Initializing game ...');
     $('#battleship').on('click', function() {
-      $(this).css('background-position', '0px 1114px');
+      $(this).css('background-position', '0px 1300px');
       $(this).unbind('click');
-      gameStatus = 'init2';
-      createComputerShips();
-      drawPlacement();
-      drawShips();
       gamePhase.init2();
     });
   },
   this.init2 = function() {
-    console.log('Init Phase 2');
-    // drawShips();
-    // animate();
+    console.log('Placing ships');
+    gameStatus = 'init2';
+    //schiffe platzieren ...
+    $('#battleship').on('click', function() {
+      $(this).css('background-position', '0px 650px');
+      $(this).unbind('click');
+      createComputerShips();
+      //drawPlacement();
+      drawShips();
+      gamePhase.enableCanvas();
+      gamePhase.run();
+    });
+  },
+  this.run = function() {
+    console.log('running');
+    gameStatus = 'playerTurn';
+    animate();
   },
   this.enableCanvas = function() {
     canvas.addEventListener('mousemove', function (evt) {
@@ -54,7 +64,6 @@ function Phases() {
 }
 
 var gamePhase = new Phases();
-
 
 gamePhase.init();
 

@@ -24,13 +24,6 @@ function drawFields() {
       }
     }
   }
-  // for (ix = 1; ix <= 10; ix++) { //nebel
-  //   for (iy = 1; iy <= 10; iy++) {
-  //     if (mapState[ix][iy] === 0) {
-  //       drawField(ix, iy, 'fog');
-  //     }
-  //   }
-  // }
 }
 
 function drawShip(ship) {
@@ -68,7 +61,7 @@ function drawCursor(x, y) {
   drawField(x, y, 'cursor');
 }
 
-function drawBackground() {
+function clearBackground() {
   ctx.clearRect(0, 0, 950, 650);
 }
 

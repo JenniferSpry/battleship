@@ -9,7 +9,7 @@ var shotsFired = 0;
 var hitsLanded = 0;
 
 var image = new Image();
-image.src = 'img/sprite.png';
+image.src = 'img/sprites.png';
 
 /*
 Animationsgeschwindigkeit
@@ -42,30 +42,29 @@ for (i = 0; i <= 21; i++) {
   }
 }
 
-
 /**
  * @type {Array of Ship Objects}
  */
-
 var shipPositions = [
-  {start: [1, 1], end: [3, 1]},
-  {start: [1, 7], end: [15, 10]},
+  {start: [11, 1], end: [13, 1]},
+  {start: [11, 7], end: [15, 7]},
   {start: [20, 9], end: [20, 10]},
   {start: [18, 2], end: [18, 5]}
 ];
 
 
 var sprites = {
-  start:      { sx: 0, sy: 0, w: 960, h: 650, frames: 1 },
-  bgposition: { sx: 0, sy: 650, w: 960, h: 650, frames: 1 },
-  bg:         { sx: 0, sy: 1300, w: 960, h: 650, frames: 1 },
-  ship5:      { sx: 0, sy: 1950, w: 58, h: 200, frames: 1 },
-  ship4: { sx: 116, sy: 1950, w: 58, h: 160, frames: 1 },
-  ship3: { sx: 232, sy: 1950, w: 58, h: 120, frames: 1 },
-  ship2: { sx: 232, sy: 2070, w: 58, h: 80, frames: 1 },
-  smoke: { sx: 0, sy: 2150, w: 40, h: 40, frames: 4 },
-  explosion: { sx: 0, sy: 2190, w: 40, h: 40, frames: 4 },
-  drop: { sx: 0, sy: 2230, w: 40, h: 40, frames: 6 },
-  cursor: { sx: 40, sy: 2270, w: 40, h: 40, frames: 1},
-  fog: { sx: 200, sy: 2190, w: 40, h: 40, frames: 1}
+  start:      { sx: 0, sy: 0, w: 960, h: 650 },
+  bgposition: { sx: 0, sy: 0, w: 960, h: 650 },
+  bg:         { sx: 0, sy: 0, w: 960, h: 650 },
+  ship5: { sx: 0, sy: 0, w: 58, h: 200 },
+  ship4: { sx: 116, sy: 0, w: 58, h: 160 },
+  ship3: { sx: 232, sy: 0, w: 58, h: 120 },
+  ship2: { sx: 232, sy: 120, w: 58, h: 80 },
+  smoke: { sx: 0, sy: 200, w: 40, h: 40 },
+  explosion: { sx: 0, sy: 240, w: 40, h: 40 },
+  drop: { sx: 0, sy: 280, w: 40, h: 40 },
+  cursor: { sx: 240, sy: 200, w: 40, h: 40},
+  cannonup: { sx: 0, sy: 320, w: 178, h: 98},
+  cannondown: { sx: 0, sy: 419, w: 199, h: 76}
 };
