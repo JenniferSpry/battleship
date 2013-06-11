@@ -25,15 +25,14 @@ window.requestAnimFrame = (function (callback) {
  * @type {Array of Arrays}
  */
 var mapState = new Array(20);
-var i, j;
 
 /*
 Initialisiert alles mit 0.
 Man bemerke, dass die Schiffe erst ab Feld 1|1 positionert werden
  */
-for (i = 0; i <= 21; i++) {
+for (var i = 0; i <= 21; i++) {
   mapState[i] = new Array(12);
-  for (j = 0; j <= 12; j++) {
+  for (var j = 0; j <= 12; j++) {
     mapState[i][j] = 0;
     // 0=nicht beschossen Wasser
     // 1=beschossen Schiff

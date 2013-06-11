@@ -1,20 +1,28 @@
 // trage vorhandene Schiffe in die Map ein zum testen
-for (i = 0; i < shipPositions.length; i++) {
+for (var i = 0; i < shipPositions.length; i++) {
   addToMap(shipPositions[i]);
 }
 
-// Position Computer Ships
 function createComputerShips() {
+  var res = false;
+  do {
+    res = createComputerShipsLoop();
+  }
+  while (res === false);
+}
+
+// Position Computer Ships
+function createComputerShipsLoop() {
   positionShip5();
-  positionShip(4);
-  // positionShip(4);
-  // positionShip(3);
-  // positionShip(3);
-  // positionShip(3);
-  // positionShip(2);
-  // positionShip(2);
-  // positionShip(2);
-  positionShip(2);
+  var toBePlaced = [4, 4, 3, 3, 3, 2 ,2 ,2 ,2];
+  for (var a in toBePlaced) {
+    if (!(positionShip(toBePlaced[a], 40))) {
+      cleanLeftMap();
+      shipPositions = [];
+      return false;
+    }
+  }
+  return true;
 }
 
 // beim ersten Schiff muss nicht auf Kolision geachtet werden
@@ -34,15 +42,22 @@ function positionShip5() {
   shipPositions.push(ship);
 }
 
-function positionShip(n) {
+function positionShip(n, max) {
   var ship;
+  var b = 0;
   ship = createPlaceholderShip(n);
-  while (colides(ship)){
+  while ((colides(ship)) && (b < max)){
     ship = createPlaceholderShip(n);
+    b++;
   }
-  ship = stripShip(ship);
-  addToMap(ship);
-  shipPositions.push(ship);
+  if (colides(ship)){
+    return false;
+  } else {
+    ship = stripShip(ship);
+    addToMap(ship);
+    shipPositions.push(ship);
+    return true;
+  }
 }
 
 // dieses Schiff hat einen Margin, um die Kolision zu erkennen
@@ -73,15 +88,22 @@ function colides(ship) {
 }
 
 function addToMap(ship){
-  var i;
   if (ship.end[0] > ship.start[0]) { //horizontal
-    for (i = ship.start[0]; i <= ship.end[0]; i++) {
+    for (var i = ship.start[0]; i <= ship.end[0]; i++) {
       mapState[i][ship.start[1]] = 3;
     }
   }
   if (ship.end[1] > ship.start[1]) { //vertikal
-    for (i = ship.start[1]; i <= ship.end[1]; i++) {
-      mapState[ship.start[0]][i] = 3;
+    for (var j = ship.start[1]; j <= ship.end[1]; j++) {
+      mapState[ship.start[0]][j] = 3;
+    }
+  }
+}
+
+function cleanLeftMap(){
+  for (var i = 0; i <= 10; i++) {
+    for (var j = 0; j <= 12; j++) {
+      mapState[i][j] = 0;
     }
   }
 }
