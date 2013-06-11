@@ -62,7 +62,8 @@ function drawCursor(x, y) {
 }
 
 function clearBackground() {
-  ctx.clearRect(0, 0, 950, 650);
+  // does not clear all the way so the cannons need not be drawn sll the time
+  ctx.clearRect(0, 0, 960, 550);
 }
 
 function drawPlacement() {
@@ -70,4 +71,27 @@ function drawPlacement() {
   ctx.rect(60, 125, 400, 400);
   ctx.fillStyle = 'rgba(165,25,18,0.9)';
   ctx.fill();
+}
+
+function drawCannons(){
+  ctx.clearRect(0, 550, 960, 650);
+  if (gameStatus === "computerTurn"){
+    ctx.drawImage(image, sprites["cannonup"].sx, sprites["cannonup"].sy, sprites["cannonup"].w, sprites["cannonup"].h,
+               0, canvas.height - sprites["cannonup"].h, sprites["cannonup"].w, sprites["cannonup"].h);
+    ctx.save();
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
+    ctx.drawImage(image, sprites["cannondown"].sx, sprites["cannondown"].sy, sprites["cannondown"].w, sprites["cannondown"].h,
+               0, canvas.height - sprites["cannondown"].h, sprites["cannondown"].w, sprites["cannondown"].h);
+    ctx.restore();
+  } else {
+    ctx.drawImage(image, sprites["cannondown"].sx, sprites["cannondown"].sy, sprites["cannondown"].w, sprites["cannondown"].h,
+               0, canvas.height - sprites["cannondown"].h, sprites["cannondown"].w, sprites["cannondown"].h);
+    ctx.save();
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
+    ctx.drawImage(image, sprites["cannonup"].sx, sprites["cannonup"].sy, sprites["cannonup"].w, sprites["cannonup"].h,
+               0, canvas.height - sprites["cannonup"].h, sprites["cannonup"].w, sprites["cannonup"].h);
+    ctx.restore();
+  }
 }

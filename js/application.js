@@ -22,6 +22,7 @@ function Phases() {
     $('#battleship').on('click', function() {
       $(this).css('background-position', '0px 1300px');
       $(this).unbind('click');
+      createComputerShips();
       gamePhase.init2();
     });
   },
@@ -32,7 +33,6 @@ function Phases() {
     $('#battleship').on('click', function() {
       $(this).css('background-position', '0px 650px');
       $(this).unbind('click');
-      createComputerShips();
       //drawPlacement();
       drawShips();
       gamePhase.enableCanvas();
@@ -41,7 +41,8 @@ function Phases() {
   },
   this.run = function() {
     console.log('running');
-    gameStatus = 'playerTurn';
+    gameStatus = 'computerTurn';
+    drawCannons();
     animate();
   },
   this.enableCanvas = function() {
