@@ -7,6 +7,7 @@ var ctx = canvas.getContext('2d');
 var coursorpos = {x: 0, y: 0};
 var shotsFired = 0;
 var hitsLanded = 0;
+var comJustHit;
 
 var image = new Image();
 image.src = 'img/sprites.png';
