@@ -51,6 +51,8 @@ var shipPositions = [
   {start: [18, 2], end: [18, 5]}
 ];
 
+var computerShips = [];
+
 
 var sprites = {
   start:      { sx: 0, sy: 0, w: 960, h: 650 },
@@ -65,5 +67,6 @@ var sprites = {
   drop: { sx: 0, sy: 280, w: 40, h: 40 },
   cursor: { sx: 240, sy: 200, w: 40, h: 40},
   cannonup: { sx: 0, sy: 320, w: 178, h: 98},
-  cannondown: { sx: 0, sy: 419, w: 199, h: 76}
+  cannondown: { sx: 0, sy: 419, w: 199, h: 76},
+  redMap: { sx: 348, sy: 0, w: 40, h: 40}
 };

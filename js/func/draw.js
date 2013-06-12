@@ -14,13 +14,25 @@ function drawField(x, y, type) {
 
 function drawFields() {
   var ix, iy;
-  for (ix = 1; ix <= 20; ix++) {
+  for (ix = 11; ix <= 20; ix++) {
     for (iy = 1; iy <= 10; iy++) {
       if (mapState[ix][iy] === 1) { //schiff
         drawField(ix, iy, 'smoke');
       }
       if (mapState[ix][iy] === 2) { //wasser
         drawField(ix, iy, 'drop');
+      }
+    }
+  }
+  for (ix = 1; ix <= 10; ix++) {
+    for (iy = 1; iy <= 10; iy++) {
+      if (mapState[ix][iy] === 1) { //getroffenes schiff
+        drawField(ix, iy, 'smoke');
+      }
+      if ((mapState[ix][iy] === 0) || (mapState[ix][iy] === 3)) { // nicht beschossesnes wasser
+        ctx.drawImage(image, sprites["redMap"].sx + ix*40 - 40, sprites["redMap"].sy + iy*40 - 40, sprites["redMap"].w, sprites["redMap"].h,
+             fieldToCoords(ix, iy)[0], fieldToCoords(ix, iy)[1],
+             sprites["redMap"].w, sprites["redMap"].h);
       }
     }
   }
@@ -50,8 +62,8 @@ function drawShips() {
 function drawCursor(x, y) {
   if (x < 1) {
     x = 1;
-  } else if (x > 20) {
-    x = 20;
+  } else if (x > 10) {
+    x = 10;
   }
   if (y < 1) {
     y = 1;
@@ -62,7 +74,7 @@ function drawCursor(x, y) {
 }
 
 function clearBackground() {
-  // does not clear all the way so the cannons need not be drawn sll the time
+  // does not clear all the way so the cannons need not be drawn all the time
   ctx.clearRect(0, 0, 960, 550);
 }
 

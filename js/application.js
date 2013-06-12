@@ -11,6 +11,12 @@
     drawShips();
     drawFields();
     drawCursor(coursorpos.x, coursorpos.y);
+    drawCannons();
+    if (gameStatus === "computerTurn"){
+      setTimeout(enemyFire(), 10000);
+      gameStatus = "playerTurn";
+      console.log("playerTurn");
+    }
     requestAnimFrame(function () {
       animate();
     });
@@ -27,21 +33,20 @@ function Phases() {
     });
   },
   this.init2 = function() {
-    console.log('Placing ships');
+    console.log('Placing ships...');
     gameStatus = 'init2';
     //schiffe platzieren ...
     $('#battleship').on('click', function() {
       $(this).css('background-position', '0px 650px');
       $(this).unbind('click');
-      //drawPlacement();
       drawShips();
       gamePhase.enableCanvas();
       gamePhase.run();
     });
   },
   this.run = function() {
-    console.log('running');
-    gameStatus = 'computerTurn';
+    console.log('running...');
+    gameStatus = 'playerTurn';
     drawCannons();
     animate();
   },
@@ -58,7 +63,13 @@ function Phases() {
     canvas.addEventListener('click', function (evt) {
       $('.shots-fired').html(shotsFired);
       $('.cursor-position').html(coursorpos.x);
-      fire(coursorpos.x, coursorpos.y);
+      if (gameStatus === "playerTurn"){
+        if(fire(coursorpos.x, coursorpos.y)){
+          gameStatus = "computerTurn";
+          console.log("computerTurn");
+          drawCannons();
+        }
+      }
     });
 
   };

@@ -18,7 +18,7 @@ function createComputerShipsLoop() {
   for (var a in toBePlaced) {
     if (!(positionShip(toBePlaced[a], 40))) {
       cleanLeftMap();
-      shipPositions = [];
+      computerShips = [];
       return false;
     }
   }
@@ -39,7 +39,7 @@ function positionShip5() {
     ship = {start: [rx, ry], end: [rx + 4, ry]};
   }
   addToMap(ship);
-  shipPositions.push(ship);
+  computerShips.push(ship);
 }
 
 function positionShip(n, max) {
@@ -55,7 +55,7 @@ function positionShip(n, max) {
   } else {
     ship = stripShip(ship);
     addToMap(ship);
-    shipPositions.push(ship);
+    computerShips.push(ship);
     return true;
   }
 }

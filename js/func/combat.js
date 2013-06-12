@@ -2,7 +2,7 @@
 /*global $, jQuery*/
 
 function fire(x, y) {
-  if ((x > 0) && (x < 21) && (y > 0) && (y < 11)) {
+  if ((x > 0) && (x < 11) && (y > 0) && (y < 11)) {
     shotsFired++;
     if (mapState[x][y] === 3) { // Schiff getroffen
       mapState[x][y] = 1;
@@ -11,5 +11,11 @@ function fire(x, y) {
     } else if (mapState[x][y] === 0) { //Wasser getroffen 
       mapState[x][y] = 2;
     }
+  return true;
   }
+  return false;
+}
+
+function enemyFire(){
+  
 }
