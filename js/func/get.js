@@ -24,3 +24,15 @@ function getMousePos(canvas, evt) {
     y: evt.clientY - rect.top
   };
 }
+
+// gibt random boolean zurück
+function getRandomBool(){
+  return (Math.random() >= 0.5);
+}
+
+function getRandomDirection(){
+  if (Math.random() >= 0.5){
+    return -1;
+  }
+  return 1;
+}

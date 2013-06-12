@@ -29,7 +29,7 @@ function createComputerShipsLoop() {
 function positionShip5() {
   var rx, ry;
   var ship;
-  if (verticalRandom()){
+  if (getRandomBool()){
     rx = Math.floor(Math.random() * 10 + 1);
     ry = Math.floor(Math.random() * 6 + 1);
     ship = {start: [rx, ry], end: [rx, ry + 4]};
@@ -63,7 +63,7 @@ function positionShip(n, max) {
 // dieses Schiff hat einen Margin, um die Kolision zu erkennen
 function createPlaceholderShip(n){
   var rx, ry;
-  if (verticalRandom()){
+  if (getRandomBool()){
     rx = Math.floor(Math.random() * 9 + 1);
     ry = Math.floor(Math.random() * (11 - n) + 1);
     return {start: [rx - 1, ry - 1], end: [rx + 1, ry + n]};
@@ -111,9 +111,4 @@ function cleanLeftMap(){
 //entfernt den margin von den Schiffen
 function stripShip(ship){
   return {start: [ship.start[0] + 1, ship.start[1] + 1], end: [ship.end[0] - 1, ship.end[1] - 1]};
-}
-
-// gibt random boolean zurück
-function verticalRandom(){
-  return (Math.random() >= 0.5);
 }
