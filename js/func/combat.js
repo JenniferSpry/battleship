@@ -27,6 +27,9 @@ var foundShip = {start: [0, 0], end: [0, 0]};
 function enemyFire() {
   var dx, dy;
   var hitNth = false;
+  if (justHitShip && sunkShip()){
+    justHitShip = false;
+  }
   if (!justHitShip){ // just shoot where ever
     do {
       dx = Math.floor((Math.random()*9)+11);
@@ -104,7 +107,7 @@ function addToX(){
   }
 }
 
-function addToFoundShip(dx, dy){
+function addToFoundShip(dx, dy) {
   if (dx > foundShip.end[0]) {
     foundShip.end[0] = dx;
   } else if (dx < foundShip.start[0]) {
@@ -114,4 +117,13 @@ function addToFoundShip(dx, dy){
   } else if (dy < foundShip.start[1]) {
     foundShip.start[1] = dy;
   }
+}
+
+function sunkShip() {
+  if ( ((mapState[foundShip.start[0] - 1][foundShip.start[1]] === 2) || (foundShip.start[0] === 11)) && ((mapState[foundShip.end[0] + 1][foundShip.end[1]] === 2) || (foundShip.end[0] === 20)) ) {
+    return true;
+  } else if ( ((mapState[foundShip.start[0]][foundShip.start[1]-1] === 2) || (foundShip.start[1] === 1)) && ((mapState[foundShip.end[0]][foundShip.end[1]+1] === 2) || (foundShip.end[1] === 10)) ) {
+    return true;
+  }
+  return false;
 }
