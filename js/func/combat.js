@@ -33,8 +33,8 @@ function enemyFire() {
   }
   if (!justHitShip){ // just shoot where ever
     do {
-      dx = Math.floor((Math.random()*9)+11);
-      dy = Math.floor((Math.random()*10)+1);
+      dx = Math.floor(Math.random()*10)+11;
+      dy = Math.floor(Math.random()*10)+1;
       hitNth = checkHitNothing(dx, dy);
       if (!hitNth) { // hit something
         if(isShip(dx, dy)){
