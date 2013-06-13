@@ -34,7 +34,7 @@ function enemyFire() {
     do {
       dx = Math.floor((Math.random()*9)+11);
       dy = Math.floor((Math.random()*10)+1);
-      hitNth = checkHit(dx, dy);
+      hitNth = checkHitNothing(dx, dy);
       if (!hitNth) { // hit something
         if(isShip(dx, dy)){
           mapState[dx][dy] = 1;
@@ -53,14 +53,14 @@ function enemyFire() {
       } else if (foundShip.end[1] > foundShip.start[1]) { // vertical ship
         dy = addToY();
         dx = foundShip.start[0];
-      } else if (getRandomBool){
+      } else if (getRandomBool()){
         dx = addToX();
         dy = foundShip.start[1];
       } else {
         dy = addToY();
         dx = foundShip.start[0];
       }
-      hitNth = checkHit(dx, dy);
+      hitNth = checkHitNothing(dx, dy);
       if (!hitNth){
         if (isShip(dx, dy)){
           mapState[dx][dy] = 1;
@@ -80,7 +80,7 @@ function isShip(dx, dy){
   return false;
 }
 
-function checkHit(dx, dy){
+function checkHitNothing(dx, dy){
   if ((mapState[dx][dy] === 0) || (mapState[dx][dy] === 3)) {
     return false;
   }
@@ -88,7 +88,7 @@ function checkHit(dx, dy){
 }
 
 function addToY(){
-  if ((getRandomBool) && (foundShip.start[1] > 1)) {
+  if ((getRandomBool()) && (foundShip.start[1] > 1)) {
     return foundShip.start[1] - 1;
   } else if (foundShip.end[1] < 10){
     return foundShip.end[1] + 1;
@@ -98,7 +98,7 @@ function addToY(){
 }
 
 function addToX(){
-  if ((getRandomBool) && (foundShip.start[0] > 11)) {
+  if ((getRandomBool()) && (foundShip.start[0] > 11)) {
     return foundShip.start[0] - 1;
   } else if (foundShip.end[0] < 20){
     return foundShip.end[0] + 1;
@@ -120,10 +120,14 @@ function addToFoundShip(dx, dy) {
 }
 
 function sunkShip() {
-  if ( ((mapState[foundShip.start[0] - 1][foundShip.start[1]] === 2) || (foundShip.start[0] === 11)) && ((mapState[foundShip.end[0] + 1][foundShip.end[1]] === 2) || (foundShip.end[0] === 20)) ) {
+  if ( (foundShip.end[0] - foundShip.start[0] == 4) || (foundShip.end[1] - foundShip.start[1] == 4) ) { // 5-ships
+    return true;
+  } else if ( ((mapState[foundShip.start[0] - 1][foundShip.start[1]] === 2) || (foundShip.start[0] === 11)) && ((mapState[foundShip.end[0] + 1][foundShip.end[1]] === 2) || (foundShip.end[0] === 20)) ) {
     return true;
   } else if ( ((mapState[foundShip.start[0]][foundShip.start[1]-1] === 2) || (foundShip.start[1] === 1)) && ((mapState[foundShip.end[0]][foundShip.end[1]+1] === 2) || (foundShip.end[1] === 10)) ) {
     return true;
   }
   return false;
 }
+
+// should not hit next to a ship it has already sunk
