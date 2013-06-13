@@ -38,6 +38,7 @@ for (var i = 0; i <= 21; i++) {
     // 1=beschossen Schiff
     // 2=beschossen Wasser
     // 3=nicht beschossen Schiff
+    // 4=um schiff rum, nicht beschießen
   }
 }
 

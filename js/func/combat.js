@@ -29,6 +29,7 @@ function enemyFire() {
   var hitNth = false;
   if (justHitShip && sunkShip()){
     justHitShip = false;
+    addBorderToShip();
   }
   if (!justHitShip){ // just shoot where ever
     do {
@@ -121,13 +122,41 @@ function addToFoundShip(dx, dy) {
 
 function sunkShip() {
   if ( (foundShip.end[0] - foundShip.start[0] == 4) || (foundShip.end[1] - foundShip.start[1] == 4) ) { // 5-ships
+    console.log("ship sunk 5");
     return true;
-  } else if ( ((mapState[foundShip.start[0] - 1][foundShip.start[1]] === 2) || (foundShip.start[0] === 11)) && ((mapState[foundShip.end[0] + 1][foundShip.end[1]] === 2) || (foundShip.end[0] === 20)) ) {
+  } else if ( (foundShip.start[0] != foundShip.end[0]) && ((mapState[foundShip.start[0] - 1][foundShip.start[1]] === 2) || (foundShip.start[0] === 11)) && ((mapState[foundShip.end[0] + 1][foundShip.end[1]] === 2) || (foundShip.end[0] === 20)) ) {
+    console.log("ship sunk x");
     return true;
-  } else if ( ((mapState[foundShip.start[0]][foundShip.start[1]-1] === 2) || (foundShip.start[1] === 1)) && ((mapState[foundShip.end[0]][foundShip.end[1]+1] === 2) || (foundShip.end[1] === 10)) ) {
+  } else if ( (foundShip.start[1] != foundShip.end[1]) && ((mapState[foundShip.start[0]][foundShip.start[1]-1] === 2) || (foundShip.start[1] === 1)) && ((mapState[foundShip.end[0]][foundShip.end[1]+1] === 2) || (foundShip.end[1] === 10)) ) {
+    console.log("ship sunk y");
     return true;
   }
   return false;
 }
 
 // should not hit next to a ship it has already sunk
+function addBorderToShip(){
+  var j, i;
+  if (foundShip.end[0] > foundShip.start[0]) { //horizontal
+    for (j = -1; j < 2; j++){
+      for (i = foundShip.start[0]-1; i <= foundShip.end[0]+1; i++) {
+        if ((mapState[i][foundShip.start[1]+j] !== 1) && (mapState[i][foundShip.start[1]+j] !== 2)) {
+          if ((i!==10) && (i!==21) && (foundShip.start[1]+j !== 0) && (foundShip.start[1]+j !== 11)) {
+            mapState[i][foundShip.start[1]+j] = 4;
+          }
+        }
+      }
+    }
+  }
+  if (foundShip.end[1] > foundShip.start[1]) { //vertikal
+    for (j = -1; j < 2; j++){
+      for (i = foundShip.start[1]-1; i <= foundShip.end[1]+1; i++) {
+        if ( (mapState[foundShip.start[0]+j][i] !== 1) && (mapState[foundShip.start[0]+j][i] !== 2)) {
+          if ((i!==0) && (i!==11) && (foundShip.start[0]+j !== 10) && (foundShip.start[0]+j !== 21)) {
+            mapState[foundShip.start[0]+j][i] = 4;
+          }
+        }
+      }
+    }
+  }
+}
