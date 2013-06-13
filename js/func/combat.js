@@ -124,10 +124,10 @@ function sunkShip() {
   if ( (foundShip.end[0] - foundShip.start[0] == 4) || (foundShip.end[1] - foundShip.start[1] == 4) ) { // 5-ships
     console.log("ship sunk 5");
     return true;
-  } else if ( (foundShip.start[0] != foundShip.end[0]) && ((mapState[foundShip.start[0] - 1][foundShip.start[1]] === 2) || (foundShip.start[0] === 11)) && ((mapState[foundShip.end[0] + 1][foundShip.end[1]] === 2) || (foundShip.end[0] === 20)) ) {
+  } else if ( (foundShip.start[0] != foundShip.end[0]) && ((mapState[foundShip.start[0] - 1][foundShip.start[1]] === 2) || (mapState[foundShip.start[0] - 1][foundShip.start[1]] === 4) || (foundShip.start[0] === 11)) && ((mapState[foundShip.end[0] + 1][foundShip.end[1]] === 2) || (mapState[foundShip.end[0] + 1][foundShip.end[1]] === 4) || (foundShip.end[0] === 20)) ) {
     console.log("ship sunk x");
     return true;
-  } else if ( (foundShip.start[1] != foundShip.end[1]) && ((mapState[foundShip.start[0]][foundShip.start[1]-1] === 2) || (foundShip.start[1] === 1)) && ((mapState[foundShip.end[0]][foundShip.end[1]+1] === 2) || (foundShip.end[1] === 10)) ) {
+  } else if ( (foundShip.start[1] != foundShip.end[1]) && ((mapState[foundShip.start[0]][foundShip.start[1]-1] === 2) || (mapState[foundShip.start[0]][foundShip.start[1]-1] === 4) || (foundShip.start[1] === 1)) && ((mapState[foundShip.end[0]][foundShip.end[1]+1] === 2) || (mapState[foundShip.end[0]][foundShip.end[1]+1] === 4) || (foundShip.end[1] === 10)) ) {
     console.log("ship sunk y");
     return true;
   }
