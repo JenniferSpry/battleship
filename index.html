@@ -2,6 +2,8 @@
 <head>
   <title>BattleShipJS</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/lib/socket.io.js"></script>
+  <script src="js/lib/sha1.js"></script>
 </head>
 <body>
   <header id="header">
@@ -14,14 +16,32 @@
         <li><a href="#" class="link5">Impress</a></li>
       </ul>
     </nav>
-    <ul class="debug">
+ <!--    <ul class="debug">
       <li><a href="#" class="enableDebug">Enable Debug</a></li>
       <li><a href="#" class="disableDebug">Disable Debug</a></li>  
-    </ul>
+    </ul> -->
   </header>
   <div id="content">
     <canvas id="battleship" width="960" height="650"></canvas>
-    <div id="debug" class="debug">
+    <div id="chat" class="chat">
+    <div class="gradientBlack chatHeader">
+      <div class="chat_status"></div>
+      <h1>Chat.js</h1>
+      <div class="chat_window_controls">
+        <span class="minimize">_</span>
+      </div>
+    </div>
+    <div class="chat_body">
+      <div class="chat_content">
+        <div id="old_messages">Load older messages!</div>
+      </div>
+      <div class="chat_input">
+        <textarea name="chat_input" id="chat_input" cols="30" rows="4"></textarea>
+      </div>  
+    </div>
+  
+  </div>
+ <!--    <div id="debug" class="debug">
       <ul>
         <li>Cursor Position: <span class="cursor-position">x/y</span></li>
         <li>Active Field: <span class="active-field">x/y</span></li>
@@ -31,9 +51,8 @@
         <li>Phase: <span class="phase">Init</span></li>
         <li>Active: <span class="active">Computer</span></li>
       </ul>
-    </div>
+    </div> -->
   </div>
-  
   <footer></footer>
 </body>
 <script src="js/lib/jquery.min.js"></script>
@@ -43,5 +62,7 @@
 <script src="js/func/combat.js"></script>
 <script src="js/func/populate.js"></script>
 <script src="js/func/debug.js"></script>
+<script src="js/func/chat.js"></script>
 <script src="js/application.js"></script>
+
 </html>
