@@ -3,8 +3,7 @@
 function drawField(x, y, type) {
   if ((x === 0) && (y === 0)) {
     ctx.drawImage(image, sprites[type].sx, sprites[type].sy, sprites[type].w, sprites[type].h,
-             0, 0,
-             sprites[type].w, sprites[type].h);
+             0, 0, sprites[type].w, sprites[type].h);
   } else {
     ctx.drawImage(image, sprites[type].sx, sprites[type].sy, sprites[type].w, sprites[type].h,
              fieldToCoords(x, y)[0], fieldToCoords(x, y)[1],
@@ -22,32 +21,35 @@ function drawAniField(x, y, type, frame) {
 
 function drawFields() {
   var ix, iy;
+  // player map
   for (ix = 11; ix <= 20; ix++) {
     for (iy = 1; iy <= 10; iy++) {
-      if (mapState[ix][iy] === 1) { //schiff
-        drawField(ix, iy, 'smoke');
+      if (mapState[ix][iy] > 3) { // hit ship
+        drawAniField(ix, iy, 'smoke', mapState[ix][iy]-4);
       }
-      if (mapState[ix][iy] === 2) { //wasser
+      if (mapState[ix][iy] === 1) { // hit water
         drawField(ix, iy, 'drop');
       }
     }
   }
+  // computer map
   for (ix = 1; ix <= 10; ix++) {
       for (iy = 1; iy <= 10; iy++) {
-        if ((mapState[ix][iy] === 0) || (mapState[ix][iy] === 3)) { // nicht beschossesnes wasser
+        if ((mapState[ix][iy] === 0) || (mapState[ix][iy] === 3)) { // not hit water
           ctx.drawImage(image, sprites["redMap"].sx + ix*40 - 40, sprites["redMap"].sy + iy*40 - 40, sprites["redMap"].w, sprites["redMap"].h,
                fieldToCoords(ix, iy)[0], fieldToCoords(ix, iy)[1],
                sprites["redMap"].w, sprites["redMap"].h);
         }
       }
     }
+  // whole map
   if (justHitField){
     if (aniCounter < 100){
       if ((aniCounter > 9) && (aniCounter < 22)) {
-        if (mapState[hitField.x][hitField.y] === 2 ){ // water
-          drawAniField(hitField.x, hitField.y, 'drop', aniCounter-10);
-        } else {
-          drawAniField(hitField.x, hitField.y, 'explosion', aniCounter-10);
+        if (mapState[hitField.x][hitField.y] === 1 ){ // hit water
+          drawAniField(hitField.x, hitField.y, 'drop', aniCounter - 10);
+        } else { // hit ship
+          drawAniField(hitField.x, hitField.y, 'explosion', aniCounter - 10);
         }
       }
       aniCounter++;
@@ -103,13 +105,6 @@ function drawCursor(x, y) {
 function clearBackground() {
   // does not clear all the way so the cannons need not be drawn all the time
   ctx.clearRect(0, 0, 960, 550);
-}
-
-function drawPlacement() {
-  ctx.beginPath();
-  ctx.rect(60, 125, 400, 400);
-  ctx.fillStyle = 'rgba(165,25,18,0.9)';
-  ctx.fill();
 }
 
 function drawCannons(){

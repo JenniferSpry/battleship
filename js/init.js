@@ -10,7 +10,7 @@ var hitsLanded = 0;
 
 var justHitField = false;
 var aniCounter = 1;
-var hitField = {x:0, y:0};
+var hitField = {x: 0, y: 0};
 
 var image = new Image();
 image.src = 'img/sprites.png';
@@ -38,11 +38,11 @@ for (var i = 0; i <= 21; i++) {
   mapState[i] = new Array(12);
   for (var j = 0; j <= 12; j++) {
     mapState[i][j] = 0;
-    // 0=nicht beschossen Wasser
-    // 1=beschossen Schiff
-    // 2=beschossen Wasser
-    // 3=nicht beschossen Schiff
-    // 4=um schiff rum, nicht beschießen
+    // 0 = nicht beschossen Wasser
+    // 1 = beschossen Wasser
+    // 2 = um schiff rum, nicht beschießen
+    // 3 = nicht beschossen Schiff
+    // >4 = beschossen Schiff Nummer ist gleich animations Frame
   }
 }
 
