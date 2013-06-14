@@ -21,18 +21,7 @@ function drawAniField(x, y, type, frame) {
 
 function drawFields() {
   var ix, iy;
-  // player map
-  for (ix = 11; ix <= 20; ix++) {
-    for (iy = 1; iy <= 10; iy++) {
-      if (mapState[ix][iy] > 3) { // hit ship
-        drawAniField(ix, iy, 'smoke', mapState[ix][iy]-4);
-      }
-      if (mapState[ix][iy] === 1) { // hit water
-        drawField(ix, iy, 'drop');
-      }
-    }
-  }
-  // computer map
+  // just computer map
   for (ix = 1; ix <= 10; ix++) {
       for (iy = 1; iy <= 10; iy++) {
         if ((mapState[ix][iy] === 0) || (mapState[ix][iy] === 3)) { // not hit water
@@ -43,22 +32,48 @@ function drawFields() {
       }
     }
   // whole map
-  if (justHitField){
-    if (aniCounter < 100){
-      if ((aniCounter > 9) && (aniCounter < 22)) {
-        if (mapState[hitField.x][hitField.y] === 1 ){ // hit water
-          drawAniField(hitField.x, hitField.y, 'drop', aniCounter - 10);
-        } else { // hit ship
-          drawAniField(hitField.x, hitField.y, 'explosion', aniCounter - 10);
+  for (ix = 1; ix <= 20; ix++) {
+    for (iy = 1; iy <= 10; iy++) {
+      // fields where ship is hit
+      if (mapState[ix][iy] > 3) {
+        if ((justHitField) && (hitField.x === ix) && (hitField.y === iy)) { // draw first animation here
+          if (aniCounter < 100) {
+            if ((aniCounter > 9) && (aniCounter < 22)) {
+              drawAniField(hitField.x, hitField.y, 'explosion', aniCounter - 10);
+            } else {
+              drawAniField(ix, iy, 'smoke', mapState[ix][iy]-4);
+              mapState[ix][iy] = mapState[ix][iy] + 1;
+              if (mapState[ix][iy] >= 12+4) {
+                mapState[ix][iy] = 4;
+              }
+            }
+            aniCounter++;
+          }
+        } else { // draw smoke animation here
+          drawAniField(ix, iy, 'smoke', mapState[ix][iy]-4);
+          mapState[ix][iy] = mapState[ix][iy] + 1;
+          if (mapState[ix][iy] >= 12+4) {
+            mapState[ix][iy] = 4;
+          }
         }
       }
-      aniCounter++;
-    }
-  } else {
-    for (ix = 1; ix <= 10; ix++) {
-      for (iy = 1; iy <= 10; iy++) {
-        if (mapState[ix][iy] === 1) { //getroffenes schiff
-          drawField(ix, iy, 'smoke');
+      // fields where water is hit
+      if (mapState[ix][iy] === 1) {
+        if ((justHitField) && (hitField.x === ix) && (hitField.y === iy)) { // draw first animation here
+          if (aniCounter < 100) {
+            if ((aniCounter > 9) && (aniCounter < 22)) {
+              drawAniField(hitField.x, hitField.y, 'drop', aniCounter - 10);
+            } else {
+              if (ix > 10){
+                drawField(ix, iy, 'drop');
+              }
+            }
+            aniCounter++;
+          }
+        } else {
+          if (ix > 10){
+            drawField(ix, iy, 'drop'); // draw regular hit water here
+          }
         }
       }
     }
