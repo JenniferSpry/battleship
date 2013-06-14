@@ -12,10 +12,13 @@
     drawFields();
     drawCursor(coursorpos.x, coursorpos.y);
     drawCannons();
-    if (gameStatus === "computerTurn"){
-      setTimeout(enemyFire(), 10000);
-      gameStatus = "playerTurn";
-      console.log("playerTurn");
+    if (aniCounter === 100){
+      justHitField = false;
+      flipGameStatus();
+      if (gameStatus === "computerTurn"){
+        enemyFire();
+      }
+      aniCounter = 1;
     }
     requestAnimFrame(function () {
       animate();
@@ -65,8 +68,6 @@ function Phases() {
       $('.cursor-position').html(coursorpos.x);
       if (gameStatus === "playerTurn"){
         if(fire(coursorpos.x, coursorpos.y)){
-          gameStatus = "computerTurn";
-          console.log("computerTurn");
           drawCannons();
         }
       }

@@ -12,6 +12,14 @@ function drawField(x, y, type) {
   }
 }
 
+function drawAniField(x, y, type, frame) {
+  if ((x === 0) && (y === 0)) {
+    ctx.drawImage(image, 0, sprites[type].sy, 40, 40, 0, 0, 40, 40);
+  } else {
+    ctx.drawImage(image, 40*frame, sprites[type].sy, 40, 40, fieldToCoords(x, y)[0], fieldToCoords(x, y)[1], 40, 40);
+  }
+}
+
 function drawFields() {
   var ix, iy;
   for (ix = 11; ix <= 20; ix++) {
@@ -25,14 +33,31 @@ function drawFields() {
     }
   }
   for (ix = 1; ix <= 10; ix++) {
-    for (iy = 1; iy <= 10; iy++) {
-      if (mapState[ix][iy] === 1) { //getroffenes schiff
-        drawField(ix, iy, 'smoke');
+      for (iy = 1; iy <= 10; iy++) {
+        if ((mapState[ix][iy] === 0) || (mapState[ix][iy] === 3)) { // nicht beschossesnes wasser
+          ctx.drawImage(image, sprites["redMap"].sx + ix*40 - 40, sprites["redMap"].sy + iy*40 - 40, sprites["redMap"].w, sprites["redMap"].h,
+               fieldToCoords(ix, iy)[0], fieldToCoords(ix, iy)[1],
+               sprites["redMap"].w, sprites["redMap"].h);
+        }
       }
-      if ((mapState[ix][iy] === 0) || (mapState[ix][iy] === 3)) { // nicht beschossesnes wasser
-        ctx.drawImage(image, sprites["redMap"].sx + ix*40 - 40, sprites["redMap"].sy + iy*40 - 40, sprites["redMap"].w, sprites["redMap"].h,
-             fieldToCoords(ix, iy)[0], fieldToCoords(ix, iy)[1],
-             sprites["redMap"].w, sprites["redMap"].h);
+    }
+  if (justHitField){
+    if (aniCounter < 100){
+      if ((aniCounter > 9) && (aniCounter < 22)) {
+        if (mapState[hitField.x][hitField.y] === 2 ){ // water
+          drawAniField(hitField.x, hitField.y, 'drop', aniCounter-10);
+        } else {
+          drawAniField(hitField.x, hitField.y, 'explosion', aniCounter-10);
+        }
+      }
+      aniCounter++;
+    }
+  } else {
+    for (ix = 1; ix <= 10; ix++) {
+      for (iy = 1; iy <= 10; iy++) {
+        if (mapState[ix][iy] === 1) { //getroffenes schiff
+          drawField(ix, iy, 'smoke');
+        }
       }
     }
   }
@@ -60,17 +85,19 @@ function drawShips() {
 }
 
 function drawCursor(x, y) {
-  if (x < 1) {
-    x = 1;
-  } else if (x > 10) {
-    x = 10;
+  if ((!justHitField) && (gameStatus === "playerTurn")){
+    if (x < 1) {
+      x = 1;
+    } else if (x > 10) {
+      x = 10;
+    }
+    if (y < 1) {
+      y = 1;
+    } else if (y > 10) {
+      y = 10;
+    }
+    drawField(x, y, 'cursor');
   }
-  if (y < 1) {
-    y = 1;
-  } else if (y > 10) {
-    y = 10;
-  }
-  drawField(x, y, 'cursor');
 }
 
 function clearBackground() {

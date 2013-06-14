@@ -8,6 +8,10 @@ var coursorpos = {x: 0, y: 0};
 var shotsFired = 0;
 var hitsLanded = 0;
 
+var justHitField = false;
+var aniCounter = 1;
+var hitField = {x:0, y:0};
+
 var image = new Image();
 image.src = 'img/sprites.png';
 
@@ -74,8 +78,8 @@ var sprites = {
   smoke: { sx: 0, sy: 200, w: 40, h: 40 },
   explosion: { sx: 0, sy: 240, w: 40, h: 40 },
   drop: { sx: 0, sy: 280, w: 40, h: 40 },
-  cursor: { sx: 240, sy: 200, w: 40, h: 40},
+  cursor: { sx: 480, sy: 200, w: 40, h: 40},
   cannonup: { sx: 0, sy: 320, w: 178, h: 98},
   cannondown: { sx: 0, sy: 419, w: 199, h: 76},
-  redMap: { sx: 348, sy: 0, w: 40, h: 40}
+  redMap: { sx: 560, sy: 95, w: 40, h: 40}
 };

@@ -8,8 +8,14 @@ function fire(x, y) {
       mapState[x][y] = 1;
       hitsLanded++;
       $('.hits-landed').html(hitsLanded);
+      justHitField = true;
+      hitField.x = x;
+      hitField.y = y;
       return true;
-    } else if (mapState[x][y] === 0) { // Wasser getroffen 
+    } else if (mapState[x][y] === 0) { // Wasser getroffen
+      justHitField = true;
+      hitField.x = x;
+      hitField.y = y;
       mapState[x][y] = 2;
       return true;
     } else if (mapState[x][y] === 1){ // already shot here
@@ -37,6 +43,9 @@ function enemyFire() {
       dy = Math.floor(Math.random()*10)+1;
       hitNth = checkHitNothing(dx, dy);
       if (!hitNth) { // hit something
+          justHitField = true;
+          hitField.x = dx;
+          hitField.y = dy;
         if(isShip(dx, dy)){
           mapState[dx][dy] = 1;
           justHitShip = true;
@@ -63,6 +72,9 @@ function enemyFire() {
       }
       hitNth = checkHitNothing(dx, dy);
       if (!hitNth){
+        justHitField = true;
+        hitField.x = dx;
+        hitField.y = dy;
         if (isShip(dx, dy)){
           mapState[dx][dy] = 1;
           addToFoundShip(dx, dy);
@@ -158,5 +170,15 @@ function addBorderToShip(){
         }
       }
     }
+  }
+}
+
+function flipGameStatus(){
+  if (gameStatus === "computerTurn"){
+    gameStatus = "playerTurn";
+    console.log("playerTurn");
+  } else if (gameStatus === "playerTurn"){
+    gameStatus = "computerTurn";
+    console.log("computerTurn");
   }
 }
