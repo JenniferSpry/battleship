@@ -77,7 +77,7 @@ function isPlayerShipSunk(ship) {
 
 function sinkPlayerShip(ship, index){
   addSunkShipToMap(ship);
-  addBorderToShip(ship);
+  addBorderToShip(ship, "right");
   playerShips[index].sunk = true;
 }
 

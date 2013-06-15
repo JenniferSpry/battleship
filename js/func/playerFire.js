@@ -26,7 +26,7 @@ var question;
       if (comShipIndex != -1) { // we hit a ship, did we sink it?
         if (isComputerShipSunk(computerShips[comShipIndex])) {
           addSunkShipToMap(computerShips[comShipIndex]);
-          addBorderToShip(computerShips[comShipIndex]);
+          addBorderToShip(computerShips[comShipIndex], "left");
           computerShips[comShipIndex].sunk = true;
           aniCounter = 100;
         }
@@ -35,7 +35,7 @@ var question;
         if(question.answer){
           comShipIndex = question.shipIndex;
           addSunkShipToMap(computerShips[comShipIndex]);
-          addBorderToShip(computerShips[comShipIndex]);
+          addBorderToShip(computerShips[comShipIndex], "left");
           computerShips[comShipIndex].sunk = true;
           aniCounter = 100;
         }
