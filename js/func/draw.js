@@ -33,21 +33,21 @@ function drawFields() {
       if (mapState[ix][iy] > 4) {
         if ((justHitField) && (hitField.x === ix) && (hitField.y === iy)) { // draw first animation here
           if (aniCounter < 100) {
-            if ((aniCounter > 9) && (aniCounter < 22)) {
-              drawAniField(hitField.x, hitField.y, 'explosion', aniCounter - 10);
+            if ((aniCounter > 9) && (aniCounter < 37)) {
+              drawAniField(hitField.x, hitField.y, 'explosion', Math.floor((aniCounter-10)/3));
             } else {
-              drawAniField(ix, iy, 'smoke', mapState[ix][iy]-5);
+              drawAniField(ix, iy, 'smoke', Math.floor((mapState[ix][iy]-5)/5));
               mapState[ix][iy] = mapState[ix][iy] + 1;
-              if (mapState[ix][iy] >= 12+5) {
+              if (mapState[ix][iy] >= 60+5) {
                 mapState[ix][iy] = 5;
               }
             }
             aniCounter++;
           }
         } else { // draw smoke animation here
-          drawAniField(ix, iy, 'smoke', mapState[ix][iy]-5);
+          drawAniField(ix, iy, 'smoke', Math.floor((mapState[ix][iy]-5)/5));
           mapState[ix][iy] = mapState[ix][iy] + 1;
-          if (mapState[ix][iy] >= 12+5) {
+          if (mapState[ix][iy] >= 60+5) {
             mapState[ix][iy] = 5;
           }
         }
@@ -56,18 +56,18 @@ function drawFields() {
       if (mapState[ix][iy] === 1) {
         if ((justHitField) && (hitField.x === ix) && (hitField.y === iy)) { // draw first animation here
           if (aniCounter < 100) {
-            if ((aniCounter > 9) && (aniCounter < 22)) {
-              drawAniField(hitField.x, hitField.y, 'drop', aniCounter - 10);
+            if ((aniCounter > 9) && (aniCounter < 37)) {
+              drawAniField(hitField.x, hitField.y, 'drop', Math.floor((aniCounter-10)/3));
             } else {
-              if (ix > 10){
-                drawField(ix, iy, 'drop');
+              if (ix > 37){
+                drawField(ix, iy, 'dropEnd');
               }
             }
             aniCounter++;
           }
         } else {
-          if (ix > 10){
-            drawField(ix, iy, 'drop'); // draw regular hit water here
+          if (ix > 37){
+            drawField(ix, iy, 'dropEnd'); // draw regular hit water here
           }
         }
       }

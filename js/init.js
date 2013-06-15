@@ -81,5 +81,6 @@ var sprites = {
   cursor: { sx: 480, sy: 200, w: 40, h: 40},
   cannonup: { sx: 0, sy: 320, w: 178, h: 98},
   cannondown: { sx: 0, sy: 419, w: 199, h: 76},
-  redMap: { sx: 560, sy: 95, w: 40, h: 40}
+  redMap: { sx: 560, sy: 0, w: 40, h: 40},
+  dropEnd: { sx: 480, sy: 280, w: 40, h: 40 }
 };
