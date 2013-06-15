@@ -59,16 +59,14 @@ function drawFields() {
             if ((aniCounter > 9) && (aniCounter < 37)) {
               drawAniField(hitField.x, hitField.y, 'drop', Math.floor((aniCounter-10)/3));
             } else {
-              if (ix > 37){
+              if (aniCounter > 37){
                 drawField(ix, iy, 'dropEnd');
               }
             }
             aniCounter++;
           }
         } else {
-          if (ix > 37){
-            drawField(ix, iy, 'dropEnd'); // draw regular hit water here
-          }
+          drawField(ix, iy, 'dropEnd'); // draw regular hit water here
         }
       }
     }
