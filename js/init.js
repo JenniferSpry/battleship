@@ -1,4 +1,3 @@
-/*global document, window, Image */
 
 var gameStatus = 'init'; // init, init2, playerTurn, computerTurn, gameWon, gameLost
 var canvas = document.getElementById('battleship');
@@ -42,26 +41,27 @@ for (var i = 0; i <= 21; i++) {
     // 1 = beschossen Wasser
     // 2 = um schiff rum, nicht beschießen
     // 3 = nicht beschossen Schiff
-    // >4 = beschossen Schiff Nummer ist gleich animations Frame
+    // 4 = sunk ship
+    // >5 = beschossen Schiff Nummer ist gleich animations Frame
   }
 }
 
 /**
  * @type {Array of Ship Objects}
  */
-var shipPositions = [
-  {start: [11, 1], end: [13, 1]},
-  {start: [11, 7], end: [15, 7]},
-  {start: [20, 9], end: [20, 10]},
-  {start: [11, 3], end: [14, 3]},
-  {start: [11, 9], end: [11, 10]},
-  {start: [13, 9], end: [13, 10]},
-  {start: [15, 9], end: [15, 10]},
-  {start: [17, 7], end: [17, 10]},
-  {start: [11, 5], end: [15, 5]},
-  {start: [16, 1], end: [16, 3]},
-  {start: [20, 1], end: [20, 5]},
-  {start: [18, 2], end: [18, 5]}
+var playerShips = [
+  {start: [11, 1], end: [13, 1], sunk: false},
+  {start: [11, 7], end: [15, 7], sunk: false},
+  {start: [20, 9], end: [20, 10], sunk: false},
+  {start: [11, 3], end: [14, 3], sunk: false},
+  {start: [11, 9], end: [11, 10], sunk: false},
+  {start: [13, 9], end: [13, 10], sunk: false},
+  {start: [15, 9], end: [15, 10], sunk: false},
+  {start: [17, 7], end: [17, 10], sunk: false},
+  {start: [11, 5], end: [15, 5], sunk: false},
+  {start: [16, 1], end: [16, 3], sunk: false},
+  {start: [20, 1], end: [20, 5], sunk: false},
+  {start: [18, 2], end: [18, 5], sunk: false}
 ];
 
 var computerShips = [];

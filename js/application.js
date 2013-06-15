@@ -8,6 +8,7 @@
 
   function animate() {
     clearBackground();
+    drawRed();
     drawShips();
     drawFields();
     drawCursor(coursorpos.x, coursorpos.y);
@@ -16,9 +17,10 @@
       justHitField = false;
       flipGameStatus();
       if (gameStatus === "computerTurn"){
-        enemyFire();
+        computerFire();
+      } else {
+        aniCounter = 1;
       }
-      aniCounter = 1;
     }
     requestAnimFrame(function () {
       animate();

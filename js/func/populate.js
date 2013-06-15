@@ -1,6 +1,6 @@
 // trage vorhandene Schiffe in die Map ein zum testen
-for (var i = 0; i < shipPositions.length; i++) {
-  addToMap(shipPositions[i]);
+for (var i = 0; i < playerShips.length; i++) {
+  addToMap(playerShips[i]);
 }
 
 function createComputerShips() {
@@ -32,11 +32,11 @@ function positionShip5() {
   if (getRandomBool()){
     rx = Math.floor(Math.random() * 10 + 1);
     ry = Math.floor(Math.random() * 6 + 1);
-    ship = {start: [rx, ry], end: [rx, ry + 4]};
+    ship = {start: [rx, ry], end: [rx, ry + 4], sunk:false};
   } else {
     rx = Math.floor(Math.random() * 6 + 1);
     ry = Math.floor(Math.random() * 10 + 1);
-    ship = {start: [rx, ry], end: [rx + 4, ry]};
+    ship = {start: [rx, ry], end: [rx + 4, ry], sunk:false};
   }
   addToMap(ship);
   computerShips.push(ship);
@@ -66,11 +66,11 @@ function createPlaceholderShip(n){
   if (getRandomBool()){
     rx = Math.floor(Math.random() * 9 + 1);
     ry = Math.floor(Math.random() * (11 - n) + 1);
-    return {start: [rx - 1, ry - 1], end: [rx + 1, ry + n]};
+    return {start: [rx - 1, ry - 1], end: [rx + 1, ry + n], sunk:false};
   } else {
     rx = Math.floor(Math.random() * (11 - n) + 1);
     ry = Math.floor(Math.random() * 9 + 1);
-    return {start: [rx - 1, ry - 1], end: [rx + n, ry + 1]};
+    return {start: [rx - 1, ry - 1], end: [rx + n, ry + 1], sunk:false};
   }
 }
 
@@ -110,5 +110,5 @@ function cleanLeftMap(){
 
 //entfernt den margin von den Schiffen
 function stripShip(ship){
-  return {start: [ship.start[0] + 1, ship.start[1] + 1], end: [ship.end[0] - 1, ship.end[1] - 1]};
+  return {start: [ship.start[0] + 1, ship.start[1] + 1], end: [ship.end[0] - 1, ship.end[1] - 1] , sunk:false};
 }
