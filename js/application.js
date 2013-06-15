@@ -31,7 +31,7 @@ function Phases() {
   this.init = function() {
     console.log('Initializing game ...');
     $('#battleship').on('click', function() {
-      $(this).css('background-position', '0px 1300px');
+      $(this).css('background-position', '0px 1950px');
       $(this).unbind('click');
       createComputerShips();
       gamePhase.init2();
@@ -40,6 +40,16 @@ function Phases() {
   this.init2 = function() {
     console.log('Placing ships...');
     gameStatus = 'init2';
+    //schiffe platzieren ...
+    $('#battleship').on('click', function() {
+      $(this).css('background-position', '0px 1300px');
+      $(this).unbind('click');
+      gamePhase.init3();
+    });
+  },
+  this.init3 = function() {
+    console.log('start game...');
+    gameStatus = 'init3';
     //schiffe platzieren ...
     $('#battleship').on('click', function() {
       $(this).css('background-position', '0px 650px');
