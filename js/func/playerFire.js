@@ -92,7 +92,7 @@ function isComputerShipSunk(ship) {
 
 function didPlayerSinkAnyShip(){
   for (var i = 0; i < computerShips.length; i++) {
-    if (!computerShips[i].sink){
+    if (!(computerShips[i].sunk)){
       if(isComputerShipSunk(computerShips[i])){
         return {answer: true, shipIndex: i};
       }
