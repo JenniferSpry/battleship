@@ -68,7 +68,7 @@ function Phases() {
     canvas.addEventListener('click', function (evt) {
       $('.shots-fired').html(shotsFired);
       $('.cursor-position').html(coursorpos.x);
-      if (gameStatus === "playerTurn"){
+      if ((gameStatus === "playerTurn") && (justHitField === false)){
         if(fire(coursorpos.x, coursorpos.y)){
           drawCannons();
         }
