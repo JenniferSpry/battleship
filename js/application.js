@@ -1,8 +1,3 @@
-/*global canvas, getMousePos, shotsFired, hitPoints, mapState, hitsLanded, coursorpos */
-/*global ctx, fieldToCoords, coordsToField, image, sprites, mapState, shipPositions, fire */
-/*global enableDebug, drawBackground, drawShips, drawFields, drawCursor, requestAnimFrame, createShip */
-/*global $, jQuery*/
-
 (function () {
   // enableDebug();
 
@@ -22,9 +17,17 @@
         aniCounter = 1;
       }
     }
-    requestAnimFrame(function () {
-      animate();
-    });
+    if (gameEnd){
+      if (computerHitsLanded >= 30){
+        drawWonLost(false);
+      } else {
+        drawWonLost(true);
+      }
+    } else {
+      requestAnimFrame(function () {
+        animate();
+      });
+    }
   }
 
 function Phases() {
@@ -76,7 +79,6 @@ function Phases() {
     }, false);
 
     canvas.addEventListener('click', function (evt) {
-      $('.shots-fired').html(shotsFired);
       $('.cursor-position').html(coursorpos.x);
       if ((gameStatus === "playerTurn") && (justHitField === false)){
         if(fire(coursorpos.x, coursorpos.y)){

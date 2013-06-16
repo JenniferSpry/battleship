@@ -15,6 +15,10 @@ function computerFire() {
           hitField.x = dx;
           hitField.y = dy;
         if(fieldIsShip(dx, dy)){ // hit ship
+          computerHitsLanded++;
+          if (computerHitsLanded >= 30){
+            gameEnd = true;
+          }
           mapState[dx][dy] = 5;
           justHitShip = true;
           foundPShip = {start: [dx, dy], end: [dx, dy]};
@@ -44,6 +48,10 @@ function computerFire() {
         hitField.x = dx;
         hitField.y = dy;
         if (fieldIsShip(dx, dy)){
+          computerHitsLanded++;
+          if (computerHitsLanded >= 30){
+            gameEnd = true;
+          }
           mapState[dx][dy] = 5; // hit ship
           addToFoundPShip(dx, dy);
         } else {

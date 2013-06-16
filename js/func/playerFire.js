@@ -6,12 +6,13 @@ var question;
     if (checkHitNothing(x, y)){
       return false;
     } else {
-      shotsFired++;
       // what did it hit?
       if (fieldIsShip(x,y)) { // hit ship
         mapState[x][y] = 5;
-        hitsLanded++;
-        $('.hits-landed').html(hitsLanded);
+        playerHitsLanded++;
+        if (playerHitsLanded >= 30){
+            gameEnd = true;
+          }
         justHitField = true; // for drawing
         hitField.x = x;
         hitField.y = y;

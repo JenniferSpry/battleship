@@ -153,3 +153,21 @@ function drawCannons(){
     ctx.restore();
   }
 }
+
+function drawWonLost(won){
+  var wlimage = new Image();
+  wlimage.src = 'img/wonLost.png';
+  ctx.globalAlpha = 0.7;
+  ctx.beginPath();
+  ctx.rect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'black';
+  ctx.fill();
+  ctx.globalAlpha = 1;
+  if (won){
+    ctx.drawImage(wlimage, 0, 203, 686, 278, canvas.width/2-686/2, canvas.height/2-278/2, 686, 278);
+    console.log("draw won");
+  } else {
+    ctx.drawImage(wlimage, 0, 0, 686, 203, canvas.width/2-686/2, canvas.height/2-203/2, 686, 203);
+    console.log("draw lost");
+  }
+}
