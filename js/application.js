@@ -18,7 +18,7 @@
       }
     }
     if (gameEnd){
-      if (computerHitsLanded >= 30){
+      if (computerHitsLanded >= 5){
         drawWonLost(false);
       } else {
         drawWonLost(true);

@@ -10,7 +10,7 @@ var question;
       if (fieldIsShip(x,y)) { // hit ship
         mapState[x][y] = 5;
         playerHitsLanded++;
-        if (playerHitsLanded >= 30){
+        if (playerHitsLanded >= 5){
             gameEnd = true;
           }
         justHitField = true; // for drawing
