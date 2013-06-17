@@ -1,7 +1,7 @@
 var localMessageStore = [];
 var date = new Date();
 var name = prompt('Hello, what is your name?');
-var socket = io.connect('http://zeidlos.norma.uberspace.de:61995');
+var socket = io.connect('141.22.81.165:61995');
 socket.emit('username', name);
 $('.chatHeader h1').text(name);
 
