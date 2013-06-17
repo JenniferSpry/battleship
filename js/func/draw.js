@@ -164,10 +164,14 @@ function drawWonLost(won){
   ctx.fill();
   ctx.globalAlpha = 1;
   if (won){
-    ctx.drawImage(wlimage, 0, 203, 686, 278, canvas.width/2-686/2, canvas.height/2-278/2, 686, 278);
+    wlimage.onload = function() {
+        ctx.drawImage(wlimage, 0, 203, 686, 278, canvas.width/2-686/2, canvas.height/2-278/2, 686, 278);
+      };
     console.log("draw won");
   } else {
-    ctx.drawImage(wlimage, 0, 0, 686, 203, canvas.width/2-686/2, canvas.height/2-203/2, 686, 203);
+    wlimage.onload = function() {
+      ctx.drawImage(wlimage, 0, 0, 686, 203, canvas.width/2-686/2, canvas.height/2-203/2, 686, 203);
+    };
     console.log("draw lost");
   }
 }
