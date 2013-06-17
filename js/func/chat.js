@@ -1,7 +1,7 @@
 var localMessageStore = [];
 var date = new Date();
 var name = prompt('Hello, what is your name?');
-var socket = io.connect('http://localhost:61994');
+var socket = io.connect('http://zeidlos.norma.uberspace.de:61994');
 socket.emit('username', name);
 $('.chatHeader h1').text(name);
 
@@ -18,7 +18,7 @@ var i = 0;
 
 
 function createMessage (content) {
-  html = '<div class="avatar"></div><div class="chat_message messageID_' + i + '"><div class="message_details">' + content.username + '<span class="message_date">&bull; ' + content.date + '</span></div><div class="message_content">' + content.message + '</div></div>';
+  html = '<div class="chat_message messageID_' + i + '"><div class="message_details">' + content.username + '<span class="message_date">&bull; ' + content.date + '</span></div><div class="message_content">' + content.message + '</div></div>';
   $('.chat_content').append(html);
   height += $('.messageID_'+i+'').height()*2;
   $('.chat_content').scrollTop(height);
