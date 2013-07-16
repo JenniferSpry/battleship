@@ -14,6 +14,11 @@ canvas {
   border: 1px solid black;
   box-shadow: 1px 1px 30px rgb(0,0,0);
   float: left;
+  background-color: #fff;
+}
+
+#battleship {
+  background-color: #fff;
 }
 
 #content {
@@ -54,16 +59,6 @@ canvas {
   color: white;
 }
 
-#battleship {
-  background-image: url(../img/hg.png);
-  /*background-position:0px 1114px;*/
-  margin-bottom: 40px;
-}
-
-.chat_body {
-  background-color: rgb(42,42,42);
-  color:white;
-}
 
 input[type="text"], textarea { 
   margin-left:10px;

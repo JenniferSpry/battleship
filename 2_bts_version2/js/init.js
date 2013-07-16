@@ -9,7 +9,7 @@ var shotsFired = 0;
 var hitsLanded = 0;
 
 var image = new Image();
-image.src = 'files/sprite.png';
+image.src = 'img/sprite.png';
 
 /*
 Animationsgeschwindigkeit
