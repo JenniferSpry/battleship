@@ -16,7 +16,7 @@ function computerFire() {
           hitField.y = dy;
         if(fieldIsShip(dx, dy)){ // hit ship
           computerHitsLanded++;
-          if (computerHitsLanded >= 5){
+          if (computerHitsLanded >= 30){
             gameEnd = true;
           }
           mapState[dx][dy] = 5;
