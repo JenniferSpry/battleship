@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/lib/socket.io.js"></script>
   <script src="js/lib/sha1.js"></script>
+  <meta charset="utf-8" />
 </head>
 <body>
   <header id="header">
@@ -24,24 +25,10 @@
     </ul> -->
   </header>
   <div id="content">
-    <canvas id="battleship" width="960" height="650"></canvas>
-    <div id="chat" class="chat">
-    <div class="gradientBlack chatHeader">
-      <div class="chat_status"></div>
-      <h1>Chat.js</h1>
-      <div class="chat_window_controls">
-        <span class="minimize">_</span>
-      </div>
+    <div id="erklaerung">
+      Dieses Spiel ist im Rahmen meines Studiums für das Fach Mediengestaltung 2 entstanden. Leider fehlt noch die Möglichkeit eigene Schiffe selber zu platzieren (einfach klicken und die Schiffe sind automatisch da). Dies soll hoffentlich bald möglich werden. Viel Spaß!
     </div>
-    <div class="chat_body">
-      <div class="chat_content">
-        <!-- <div id="old_messages">Load older messages!</div> -->
-      </div>
-      <div class="chat_input">
-        <textarea name="chat_input" id="chat_input" cols="30" rows="4"></textarea>
-      </div>  
-    </div>
-  
+    <canvas id="battleship" width="960" height="650"></canvas>  
   </div>
  <!--    <div id="debug" class="debug">
       <ul>
