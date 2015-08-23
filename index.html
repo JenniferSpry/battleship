@@ -2,47 +2,17 @@
 <head>
   <title>BattleShipJS</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/lib/socket.io.js"></script>
-  <script src="js/lib/sha1.js"></script>
   <meta charset="utf-8" />
 </head>
+
 <body>
-  <header id="header">
-    <div class="logo">BattleShipJS</div>
-    <nav id="main-nav">
-      <ul>
-        <li><a href="index.html" class="link1">Home</a></li>
-        <li><a href="wireframes.html" class="link2">Wireframes</a></li>
-        <li><a href="art.html" class="link2">Art</a></li>
-        <li><a href="1_bts_version1/index.html" class="link3">Erster Prototyp</a></li>
-        <li><a href="2_bts_version2/index.html" class="link3">Zweiter Prototyp</a></li>
-        <li><a href="impress.html" class="link5">Impressum</a></li>
-      </ul>
-    </nav>
- <!--    <ul class="debug">
-      <li><a href="#" class="enableDebug">Enable Debug</a></li>
-      <li><a href="#" class="disableDebug">Disable Debug</a></li>  
-    </ul> -->
-  </header>
   <div id="content">
     <div id="erklaerung">
       Dieses Spiel ist im Rahmen meines Studiums für das Fach Mediengestaltung 2 entstanden. Leider fehlt noch die Möglichkeit eigene Schiffe selber zu platzieren (einfach klicken und die Schiffe sind automatisch da). Dies soll hoffentlich bald möglich werden. Viel Spaß!
     </div>
     <canvas id="battleship" width="960" height="650"></canvas>  
   </div>
- <!--    <div id="debug" class="debug">
-      <ul>
-        <li>Cursor Position: <span class="cursor-position">x/y</span></li>
-        <li>Active Field: <span class="active-field">x/y</span></li>
-        <li>Active Field coord: <span class="active-field-coord">x/y</span></li>
-        <li>Shots fired: <span class="shots-fired">0</span></li>
-        <li>Hits landed: <span class="hits-landed">0</span></li>
-        <li>Phase: <span class="phase">Init</span></li>
-        <li>Active: <span class="active">Computer</span></li>
-      </ul>
-    </div> -->
   </div>
-  <footer></footer>
 </body>
 <script src="js/lib/jquery.min.js"></script>
 <script src="js/init.js"></script>
@@ -52,8 +22,6 @@
 <script src="js/func/computerFire.js"></script>
 <script src="js/func/playerFire.js"></script>
 <script src="js/func/populate.js"></script>
-<script src="js/func/debug.js"></script>
-<!-- <script src="js/func/chat.js"></script> -->
 <script src="js/application.js"></script>
 
 </html>
