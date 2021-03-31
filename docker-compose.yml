@@ -9,9 +9,9 @@ services:
       - ./:/usr/share/nginx/html
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ikform.rule=Host(`battleship.jensweek.de`)"
-      - "traefik.http.routers.ikform.entrypoints=websecure"
-      - "traefik.http.routers.ikform.tls.certresolver=myresolver"
+      - "traefik.http.routers.battleship.rule=Host(`battleship.jensweek.de`)"
+      - "traefik.http.routers.battleship.entrypoints=websecure"
+      - "traefik.http.routers.battleship.tls.certresolver=myresolver"
     networks:
       - "web"
     ports:
