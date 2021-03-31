@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  web:
+    image: nginx:1.19.9
+    container_name: battleshipjs-web
+    restart: always
+    volumes:
+      - ./:/usr/share/nginx/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ikform.rule=Host(`battleship.jensweek.de`)"
+      - "traefik.http.routers.ikform.entrypoints=websecure"
+      - "traefik.http.routers.ikform.tls.certresolver=myresolver"
+    networks:
+      - "web"
+    ports:
+      - "8200:80"
+    stdin_open: true
+    tty: true
+networks:
+  web:
+    external: true
